@@ -9,7 +9,7 @@
 }
 
 .logo {
-  margin-left: 0.25em;
+  margin-left: 1em;
 
 }
 
@@ -60,6 +60,66 @@
     font-size: 0.9em;
   }
 }
+
+/*table for viewing admin data*/
+.data-view-table-container {
+  width: 95%;
+  overflow: auto;
+  margin-left: 2.5%;
+  margin-top: 0.5em;
+}
+
+.data-view-table {
+  width: 100%;
+}
+
+.data-row {
+  width: 100%;
+  height: 2em;
+}
+
+/*table data rows*/
+.post-title {
+  text-align: left;
+  line-height: 1.5em;
+  padding-left: 1em;
+  width: 100%;
+  font-size: 1em;
+  background-color: #3f681c;
+  color: white;
+  cursor: pointer;
+}
+
+.author {
+  font-size: 0.75em;
+  font-style: italic;
+  color: #3f681c;
+}
+
+.time-stamp {
+  font-size: 0.75em;
+  font-style: italic;
+  margin-left: 1em;
+  padding-left: 1em;
+  color: #3f681c;
+}
+
+/*table data rows*/
+.action {
+  font-size: 0.75em;
+  margin-left: 1em;
+  padding-left: 1em;
+  border-left: 1px solid #fb6542;
+  cursor: pointer;
+  color: #fb6542;
+}
+
+.vote-count {
+  text-align: center;
+  background-color: #fb6542;
+  color: white;
+}
+
 
 
 
