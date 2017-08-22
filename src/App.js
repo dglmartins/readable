@@ -3,6 +3,7 @@ import './App.css';
 import PostListView from './PostListView';
 import Header from './Header';
 import SortSelect from './SortSelect';
+import * as ReadableApi from './ReadableApi';
 
 class App extends Component {
   state = {
@@ -66,6 +67,31 @@ class App extends Component {
         deleted: false
       }
     ]
+  }
+
+  componentWillMount() {
+
+    ReadableApi.getAllPosts().then((results) => {
+      console.log(results)
+    })
+    const test = {
+      id: 'sadsadsa',
+      timestamp: 1448479767190,
+      title: 'Learn Redux in 5 minutes!',
+      body: 'New Comment',
+      author: 'Danilo',
+      parentId: '8xf0y6ziyjabvozdd253nd'
+    }
+    ReadableApi.removeComment("sadsadsa").then(() => {
+      ReadableApi.getComment('sadsadsa').then((results) => {
+
+            console.log(results)
+
+      })
+
+
+    })
+
   }
 
   render() {
