@@ -7,12 +7,17 @@ class App extends Component {
     return (
       <div>
         <div className="header">
-          <MdLibraryBooks size={30} className="react-logo" alt="logo"/>
-          <h2 className="app-title">Readable</h2>
+          <MdLibraryBooks size={20} className="logo" alt="logo"/>
+          <h2 className="title">Readable</h2>
+          <ul className="nav">
+              <li className="category-nav"><a >all</a></li>
+              <li className="category-nav"><a>react</a></li>
+              <li className="category-nav"><a>redux</a></li>
+              <li className="category-nav"><a>udacity</a></li>
+              <li className="add-post-nav"><a>new post</a></li>
+          </ul>
         </div>
-        <button className="login-button">react</button>
-        <button className="login-button">redux</button>
-        <button className="login-button">udacity</button>
+
       </div>
     );
   }

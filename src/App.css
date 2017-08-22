@@ -1,25 +1,68 @@
 .header {
-  text-align: center;
-  background-color: #375E97;
-  height: 5em;
+  text-align: left;
+  background-color: #375e97;
   color: white;
-  padding: 0.5em 0 0.5em 0;
+  padding-top: 0.5em;
   box-shadow: 0 4px 2px -2px #c0c0c0;
+  font-size: 1em;
+
 }
 
-/*login button*/
-.login-button {
-	width: 30%;
-	height: 2.5em;
-	margin:1em 0 0 2.5%;
-	color: white;
-	border-style: hidden;
+.logo {
+  margin-left: 0.25em;
+
+}
+
+.title {
+  font-size: 1em;
+  display: inline;
+  margin-left: 0.25em;
+  font-family: sans-serif;
+  font-weight: lighter;
+
+}
+
+.nav {
+  display: inline-block;
+  font-size: 1em;
+  padding: 0;
+}
+
+.category-nav {
+  display: inline-block;
+	border-left: 1px solid #ffbb00;
+	margin:0 0 0 1em;
+  padding: 0 0 0 1em;
+	color: #ffbb00;
 	cursor: pointer;
-	background-color: #FFBB00;
-	box-shadow: 0 4px 2px -2px #c0c0c0;
-	font-size: 1.2em;
 }
 
-.login-button:hover {
+.category-nav:hover {
 	color: #c0c0c0;
 }
+
+.add-post-nav {
+  display: inline-block;
+  margin:0 0 0 1em;
+  border-left: 1px solid #fb6542;
+  padding: 0 0 0 1em;
+	color: #fb6542;
+	cursor: pointer;
+  text-align: left
+}
+
+.add-post:hover {
+	color: #c0c0c0;
+}
+
+@media (max-width: 375px) {
+  .nav {
+    font-size: 0.9em;
+  }
+}
+
+
+
+
+/*3f681c
+fb6542*/
