@@ -1,30 +1,81 @@
 import React, { Component } from 'react';
-import MdLibraryBooks from 'react-icons/lib/md/library-books';
 import './App.css';
 import PostListView from './PostListView';
+import Header from './Header';
+import SortSelect from './SortSelect';
 
 class App extends Component {
   state = {
-    test: [1, 2, 3]
+    categories: [
+        {
+          name: 'react',
+          path: 'react'
+        },
+        {
+          name: 'redux',
+          path: 'redux'
+        },
+        {
+          name: 'udacity',
+          path: 'udacity'
+        }
+    ],
+
+    comments: [
+      {
+        id: '894tuq4ut84ut8v4t8wun89g',
+        parentId: "8xf0y6ziyjabvozdd253nd",
+        timestamp: 1468166872634,
+        body: 'Hi there! I am a COMMENT.',
+        author: 'thingtwo',
+        voteScore: 6,
+        deleted: false,
+        parentDeleted: false
+      },
+      {
+        id: '8tu4bsun805n8un48ve89',
+        parentId: "8xf0y6ziyjabvozdd253nd",
+        timestamp: 1469479767190,
+        body: 'Comments. Are. Cool.',
+        author: 'thingone',
+        voteScore: -5,
+        deleted: false,
+        parentDeleted: false
+      }
+    ],
+
+    posts: [
+      {
+        id: '8xf0y6ziyjabvozdd253nd',
+        timestamp: 1467166872634,
+        title: 'Udacity is the best place to learn React',
+        body: 'Everyone says so after all.',
+        author: 'thingtwo',
+        category: 'react',
+        voteScore: 6,
+        deleted: false
+      },
+    {
+        id: '6ni6ok3ym7mf1p33lnez',
+        timestamp: 1468479767190,
+        title: 'Learn Redux in 10 minutes!',
+        body: 'Just kidding. It takes more than 10 minutes to learn technology.',
+        author: 'thingone',
+        category: 'redux',
+        voteScore: -5,
+        deleted: false
+      }
+    ]
   }
 
   render() {
     return (
       <div>
-        <section className="header">
-          <MdLibraryBooks size={20} className="logo" alt="logo"/>
-          <h2 className="title">Readable</h2>
-          <ul className="nav">
-              <li className="category-nav"><a >all</a></li>
-              <li className="category-nav"><a>react</a></li>
-              <li className="category-nav"><a>redux</a></li>
-              <li className="category-nav"><a>udacity</a></li>
-              <li className="add-post-nav"><a>new post</a></li>
-          </ul>
-        </section>
-        {this.state.test.map((vote, index) => (
-          <PostListView vote={vote} key={index}/>
-        ))}
+
+        <Header/>
+        <SortSelect />
+        <PostListView test={this.state}/>
+
       </div>
     );
   }
