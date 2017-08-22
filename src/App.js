@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import MdLibraryBooks from 'react-icons/lib/md/library-books'
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <div>
+        <div className="header">
+          <MdLibraryBooks size={30} className="react-logo" alt="logo"/>
+          <h2 className="app-title">Readable</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <button className="login-button">react</button>
+        <button className="login-button">redux</button>
+        <button className="login-button">udacity</button>
       </div>
     );
   }
