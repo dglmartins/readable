@@ -3,6 +3,10 @@ import MdLibraryBooks from 'react-icons/lib/md/library-books'
 import './App.css';
 
 class App extends Component {
+  state = {
+    test: [1, 2, 3]
+  }
+
   render() {
     return (
       <div>
@@ -17,26 +21,30 @@ class App extends Component {
               <li className="add-post-nav"><a>new post</a></li>
           </ul>
         </section>
-        <section className="data-view-table-container">
-          <table className="data-view-table">
-            <tbody>
-              <tr className="data-row">
-                <td className="vote-count">Votes: <span>5</span></td>
-                <td className="post-title">This is a post title</td>
-              </tr>
-              <tr className="data-row">
-                <td colSpan="2">
-                  <span className="author">by me</span>
-                  <span className="time-stamp">Created on Saturday, May 1, 12:00pm</span>
-                  <span className="action">edit</span>
-                  <span className="action">delete</span>
-                  <span className="action">vote up</span>
-                  <span className="action">vote down</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
+        {this.state.test.map((vote, index) => (
+          <section className="data-view-table-container" key={index}>
+            <table className="data-view-table">
+              <tbody>
+                <tr className="data-row">
+                  <td className="vote-count">Votes: <span>{vote}</span></td>
+                  <td className="post-title">This is a post title</td>
+                </tr>
+                <tr className="data-row">
+                  <td colSpan="2">
+                    <span className="author">by me</span>
+                    <span className="time-stamp">Created on Saturday, May 1, 12:00pm</span>
+                    <span className="action">edit</span>
+                    <span className="action">delete</span>
+                    <span className="action">vote up</span>
+                    <span className="action">vote down</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        ))}
+
+
       </div>
     );
   }
