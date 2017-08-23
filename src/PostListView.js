@@ -1,26 +1,12 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import React from 'react';
 import Post from './Post';
 
+const PostListView = (props) => (
+  <div>
+    {props.posts.map((post) => (
+      <Post post={post} key={post.id}/>
+    ))}
+  </div>
+);
 
-class PostListView extends Component {
-
-  render() {
-    return (
-      <div>
-        {this.props.posts.map((post) => (
-          <Post post={post} key={post.id}/>
-        ))}
-      </div>
-    );
-  }
-};
-
-function mapStateToProps ({ posts }) {
-  return {
-    posts: Object.keys(posts).map((post) => posts[post])
-  };
-}
-
-export default withRouter(connect(mapStateToProps)(PostListView));
+export default PostListView;

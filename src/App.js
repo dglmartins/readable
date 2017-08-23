@@ -25,10 +25,16 @@ class App extends Component {
       <div>
         <Header/>
         <SortSelect />
-        <PostListView />
+        <PostListView posts={this.props.posts}/>
       </div>
     );
   }
+}
+
+function mapStateToProps ({ posts }) {
+  return {
+    posts: Object.keys(posts).map((post) => posts[post])
+  };
 }
 
 function mapDispatchToProps (dispatch) {
@@ -38,4 +44,4 @@ function mapDispatchToProps (dispatch) {
   };
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

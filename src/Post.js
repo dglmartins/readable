@@ -4,8 +4,6 @@ import { withRouter } from 'react-router-dom';
 import { addCommentsToStore } from './actions/comments';
 import { getCommentsOfPost } from './ReadableApi';
 
-
-
 class Post extends Component {
 
   componentWillMount() {
