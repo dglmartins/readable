@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-const PostListView = (props) => (
+const PostListView = (props) => {
+  console.log(props)
+  return(
   <div>
     {props.posts.map((post) => (
       <section key={post.id} className="data-view-table-container">
@@ -27,8 +29,8 @@ const PostListView = (props) => (
         </table>
       </section>
     ))}
-  </div>
-);
+  </div>);
+};
 
 function mapStateToProps ({ comments }) {
   return {

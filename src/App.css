@@ -37,6 +37,12 @@
 	cursor: pointer;
 }
 
+.router-link {
+  text-decoration: none;
+	color: #ffbb00;
+	cursor: pointer;
+}
+
 .category-nav:hover {
 	color: #c0c0c0;
 }

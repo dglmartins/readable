@@ -12,6 +12,7 @@ export function getCommentsOfPost (post) {
     return ReadableApi.getCommentsOfPost(post.id)
       .then((comments) => {
         dispatch(getComments(comments));
+        return comments;
       });
   }
 }

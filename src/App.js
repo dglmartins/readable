@@ -8,17 +8,15 @@ import { withRouter } from 'react-router-dom';
 import { getAllPosts } from './actions/posts';
 import { getAllCategories } from './actions/categories';
 import { getCommentsOfPost } from './actions/comments';
+import { Route } from 'react-router-dom';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
-    props.getAllPosts().then((posts) => {
-      for (const post of posts) {
-        props.getCommentsOfPost(post);
-      }
+    Promise.all([props.getAllPosts(), props.getAllCategories()]).then(([postsArray, categoriesArray]) => {
+      Promise.all(postsArray.map((post) =>  props.getCommentsOfPost(post))).then((commentsArray) => {console.log(commentsArray)});
     });
-    props.getAllCategories();
   }
 
   render() {
@@ -26,7 +24,12 @@ class App extends Component {
       <div>
         <Header/>
         <SortSelect />
-        <PostListView posts={this.props.posts}/>
+        <Route exact path='/' render={() => (
+           <PostListView posts={this.props.posts}/>
+        )}/>
+        <Route path='/:category' render={({match}) => (
+           <PostListView posts={this.props.posts.filter((post) => (post.category === match.params.category))}/>
+        )}/>
       </div>
     );
   }
@@ -40,8 +43,8 @@ function mapStateToProps ({ posts }) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    getAllPosts: (data) => dispatch(getAllPosts(data)),
-    getAllCategories: (data) => dispatch(getAllCategories(data)),
+    getAllPosts: () => dispatch(getAllPosts()),
+    getAllCategories: () => dispatch(getAllCategories()),
     getCommentsOfPost: (data) => dispatch(getCommentsOfPost(data))
 
   };
