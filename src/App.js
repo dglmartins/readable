@@ -8,15 +8,22 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getAllPosts } from './actions/posts';
 import { getAllCategories } from './actions/categories';
+import { getCommentsOfPost } from './actions/comments';
 
 class App extends Component {
 
-  componentWillMount() {
-    ReadableApi.getAllPosts().then((results) => {
-      this.props.getAllPosts(results);
+  constructor(props) {
+    super(props);
+    ReadableApi.getAllPosts().then((posts) => {
+      props.getAllPosts(posts);
+      for (const post of posts) {
+        ReadableApi.getCommentsOfPost(post.id).then((comments) => {
+          props.getCommentsOfPost(comments);
+        });
+      }
     });
-    ReadableApi.getAllCategories().then((results) => {
-      this.props.getAllCategories(results);
+    ReadableApi.getAllCategories().then((categories) => {
+      props.getAllCategories(categories);
     });
   }
 
@@ -40,7 +47,9 @@ function mapStateToProps ({ posts }) {
 function mapDispatchToProps (dispatch) {
   return {
     getAllPosts: (data) => dispatch(getAllPosts(data)),
-    getAllCategories: (data) => dispatch(getAllCategories(data))
+    getAllCategories: (data) => dispatch(getAllCategories(data)),
+    getCommentsOfPost: (data) => dispatch(getCommentsOfPost(data))
+
   };
 }
 

@@ -1,8 +1,8 @@
-export const ADD_COMMENTS_TO_STORE = 'ADD_COMMENTS_TO_STORE';
+export const GET_COMMENTS_OF_POST = 'GET_COMMENTS_OF_POST';
 
-export function addCommentsToStore(comments) {
+export function getCommentsOfPost(comments) {
   return {
-    type: ADD_COMMENTS_TO_STORE,
+    type: GET_COMMENTS_OF_POST,
     comments
   }
 };

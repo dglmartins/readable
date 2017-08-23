@@ -1,8 +1,8 @@
-import { ADD_COMMENTS_TO_STORE } from '../actions/comments';
+import { GET_COMMENTS_OF_POST } from '../actions/comments';
 
 export function comments (state = {}, action) {
   switch (action.type) {
-    case ADD_COMMENTS_TO_STORE:
+    case GET_COMMENTS_OF_POST:
       const comments = action.comments.reduce((accumulator, value) => {
         accumulator[value.id] = value;
         return accumulator
