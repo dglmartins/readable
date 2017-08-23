@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import SortSelect from './SortSelect';
 
-const PostListView = (props) => {
-  console.log(props)
-  return(
+const PostListView = (props) => (
   <div>
+    <h2 className="page-title">{props.category} posts</h2>
+    <SortSelect/>
     {props.posts.map((post) => (
       <section key={post.id} className="data-view-table-container">
         <table className="data-view-table">
@@ -29,8 +30,8 @@ const PostListView = (props) => {
         </table>
       </section>
     ))}
-  </div>);
-};
+  </div>
+);
 
 function mapStateToProps ({ comments }) {
   return {

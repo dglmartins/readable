@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import PostListView from './PostListView';
 import Header from './Header';
-import SortSelect from './SortSelect';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getAllPosts } from './actions/posts';
@@ -23,21 +22,35 @@ class App extends Component {
     return (
       <div>
         <Header/>
-        <SortSelect />
         <Route exact path='/' render={() => (
-           <PostListView posts={this.props.posts}/>
+           <PostListView
+             category="all"
+             posts={this.props.posts}/>
         )}/>
-        <Route path='/:category' render={({match}) => (
+        {this.props.categories.map((category) => (
+          <Route
+            key={category.name}
+            exact path={`/${category.name}`}
+            render={() => (
+              <PostListView
+                category={category.name}
+                posts={this.props.posts.filter((post) => (post.category === category.name))}
+              />)
+            }
+          />
+        ))}
+        {/* <Route path='/:category' render={({match}) => (
            <PostListView posts={this.props.posts.filter((post) => (post.category === match.params.category))}/>
-        )}/>
+        )}/> */}
       </div>
     );
   }
 }
 
-function mapStateToProps ({ posts }) {
+function mapStateToProps ({ posts, categories }) {
   return {
-    posts: Object.keys(posts).map((post) => posts[post])
+    posts: Object.keys(posts).map((post) => posts[post]),
+    categories: categories
   };
 }
 

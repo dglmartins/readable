@@ -43,6 +43,11 @@
 	cursor: pointer;
 }
 
+.page-title {
+  text-align: center;
+  color: #fb6542;
+}
+
 .category-nav:hover {
 	color: #c0c0c0;
 }
@@ -144,7 +149,7 @@
 
 .dropdown-container {
   width: 10em;
-  margin: 0.5em auto;
+  margin: 0.5em auto 1em auto;
 }
 
 .select-dropdown-input {
