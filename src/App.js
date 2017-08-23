@@ -3,7 +3,6 @@ import './App.css';
 import PostListView from './PostListView';
 import Header from './Header';
 import SortSelect from './SortSelect';
-import * as ReadableApi from './ReadableApi';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getAllPosts } from './actions/posts';
@@ -14,17 +13,12 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    ReadableApi.getAllPosts().then((posts) => {
-      props.getAllPosts(posts);
+    props.getAllPosts().then((posts) => {
       for (const post of posts) {
-        ReadableApi.getCommentsOfPost(post.id).then((comments) => {
-          props.getCommentsOfPost(comments);
-        });
+        props.getCommentsOfPost(post);
       }
     });
-    ReadableApi.getAllCategories().then((categories) => {
-      props.getAllCategories(categories);
-    });
+    props.getAllCategories();
   }
 
   render() {
