@@ -14,10 +14,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     Promise.all([props.getAllPosts(), props.getAllCategories()]).then(([postsArray, categoriesArray]) => {
-      Promise.all(postsArray.map((post) =>  props.getCommentsOfPost(post))).then((postWithComments) => {
-        for (const post of postWithComments) {
-          const count = post.comments.length;
-          props.addCommentCountToPost({postId: post.post.id, commentCount: count})
+      Promise.all(postsArray.map((post) =>  props.getCommentsOfPost(post))).then((postIdAndCommentCountArray) => {
+        for (const post of postIdAndCommentCountArray) {
+          props.addCommentCountToPost({postId: post.id, commentCount: post.commentCount})
         }
       });
     });
