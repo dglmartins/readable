@@ -87,6 +87,13 @@
   border-bottom: 1px solid #ffbb00;
 }
 
+.comment-view-table-container {
+  width: 95%;
+  overflow: auto;
+  margin-left: 2.5%;
+  margin-top: 0.5em;
+}
+
 .data-view-table {
   width: 100%;
 }

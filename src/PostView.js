@@ -6,9 +6,7 @@ import PostBodyRow from './PostBodyRow';
 import PostFooterRow from './PostFooterRow';
 import CommentsListView from './CommentsListView';
 
-const PostView = (props) => {
-  console.log(props.comments.filter((comment) => (comment.parentId === props.post.id)));
-  return(
+const PostView = (props) => (
   <div>
     {props.post && (
       <section className="data-view-table-container">
@@ -22,8 +20,8 @@ const PostView = (props) => {
         <CommentsListView comments={props.comments.filter((comment) => (comment.parentId === props.post.id))}/>
       </section>
     )}
-  </div>)
-};
+  </div>
+);
 
 function mapStateToProps ({ comments }) {
   return {
