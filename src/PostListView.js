@@ -2,22 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import SortSelect from './SortSelect';
-import R from 'ramda';
 import PostHeaderRow from './PostHeaderRow';
-import PostOrCommentFooterRow from './PostOrCommentFooterRow';
-
-const sortByDescendCurried = ({prop, order}) => R.sort(R[order](R.prop(prop)));
+import PostFooterRow from './PostFooterRow';
+import { sortByCurried } from './utils/helpers';
 
 const PostListView = (props) => (
   <div>
     <h2 className="page-title">{props.category} posts</h2>
-    <SortSelect/>
-    {sortByDescendCurried(props.sortBy)(props.posts).map((post) => (
+    {props.posts.length > 0 && (
+      <SortSelect/>
+    )}
+    {sortByCurried(props.sortBy)(props.posts).map((post) => (
       <section key={post.id} className="data-view-table-container">
         <table className="data-view-table">
           <tbody>
             <PostHeaderRow post={post}/>
-            <PostOrCommentFooterRow postOrComment={post}/>
+            <PostFooterRow post={post}/>
           </tbody>
         </table>
       </section>

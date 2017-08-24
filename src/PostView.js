@@ -1,9 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PostHeaderRow from './PostHeaderRow';
 import PostBodyRow from './PostBodyRow';
-import PostOrCommentFooterRow from './PostOrCommentFooterRow';
+import PostFooterRow from './PostFooterRow';
+import CommentsListView from './CommentsListView';
 
-const PostView = (props) => (
+const PostView = (props) => {
+  console.log(props.comments.filter((comment) => (comment.parentId === props.post.id)));
+  return(
   <div>
     {props.post && (
       <section className="data-view-table-container">
@@ -11,12 +16,19 @@ const PostView = (props) => (
           <tbody>
             <PostHeaderRow post={props.post}/>
             <PostBodyRow post={props.post}/>
-            <PostOrCommentFooterRow postOrComment={props.post}/>
+            <PostFooterRow post={props.post}/>
           </tbody>
         </table>
+        <CommentsListView comments={props.comments.filter((comment) => (comment.parentId === props.post.id))}/>
       </section>
     )}
-  </div>
-);
+  </div>)
+};
 
-export default PostView;
+function mapStateToProps ({ comments }) {
+  return {
+    comments: Object.keys(comments).map((comment) => comments[comment])
+  };
+}
+
+export default withRouter(connect(mapStateToProps)(PostView));

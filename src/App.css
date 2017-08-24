@@ -147,11 +147,22 @@
   color: #ffbb00;
 }
 
+.post-body {
+  font-size: 1.2em;
+}
+
+.comment-body {
+  font-style: italic;
+  color: #3f681c;
+  font-size: 0.9em;
+}
+
 .vote-count {
   text-align: center;
   background-color: #fb6542;
   color: white;
   padding: 0.25em;
+  width: 2em;
 }
 
 .dropdown-container {
