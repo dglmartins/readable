@@ -1,4 +1,5 @@
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
+export const ADD_COMMENT_COUNT_TO_POST = 'ADD_COMMENT_COUNT_TO_POSTS';
 
 function getPosts (posts) {
   return {
@@ -16,3 +17,12 @@ export function getAllPosts () {
       });
   }
 }
+
+export function addCommentCountToPost ({postId, commentCount}) {
+  console.log(commentCount);
+  return {
+    type: ADD_COMMENT_COUNT_TO_POST,
+    postId,
+    commentCount
+  }
+};

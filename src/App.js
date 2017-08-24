@@ -4,7 +4,7 @@ import PostListView from './PostListView';
 import Header from './Header';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getAllPosts } from './actions/posts';
+import { getAllPosts, addCommentCountToPost } from './actions/posts';
 import { getAllCategories } from './actions/categories';
 import { getCommentsOfPost } from './actions/comments';
 import { Route } from 'react-router-dom';
@@ -14,7 +14,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     Promise.all([props.getAllPosts(), props.getAllCategories()]).then(([postsArray, categoriesArray]) => {
-      Promise.all(postsArray.map((post) =>  props.getCommentsOfPost(post))).then((commentsArray) => {console.log(commentsArray)});
+      Promise.all(postsArray.map((post) =>  props.getCommentsOfPost(post))).then((postWithComments) => {
+        for (const post of postWithComments) {
+          const count = post.comments.length;
+          props.addCommentCountToPost({postId: post.post.id, commentCount: count})
+        }
+      });
     });
   }
 
@@ -58,7 +63,8 @@ function mapDispatchToProps (dispatch) {
   return {
     getAllPosts: () => dispatch(getAllPosts()),
     getAllCategories: () => dispatch(getAllCategories()),
-    getCommentsOfPost: (data) => dispatch(getCommentsOfPost(data))
+    getCommentsOfPost: (data) => dispatch(getCommentsOfPost(data)),
+    addCommentCountToPost: (data) => dispatch(addCommentCountToPost(data))
 
   };
 }
