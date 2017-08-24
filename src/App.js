@@ -63,7 +63,7 @@ class App extends Component {
               }
             />
           ))}
-            <Route path="*" component={NoMatch}/>
+            <Route component={NoMatch}/>
         </Switch>
       </div>
     );
@@ -85,7 +85,6 @@ function mapDispatchToProps (dispatch) {
     getCommentsOfPost: (data) => dispatch(getCommentsOfPost(data)),
     addCommentCountToPost: (data) => dispatch(addCommentCountToPost(data)),
     spinnerOnOff: (data) => dispatch(spinnerOnOff(data))
-
   };
 }
 
