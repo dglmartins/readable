@@ -37,9 +37,15 @@
 	cursor: pointer;
 }
 
-.router-link {
+.router-nav-link {
   text-decoration: none;
 	color: #ffbb00;
+	cursor: pointer;
+}
+
+.router-post-link {
+  /*text-decoration: none;*/
+	color: white;
 	cursor: pointer;
 }
 
@@ -99,7 +105,7 @@
   font-size: 1em;
   background-color: #3f681c;
   color: white;
-  cursor: pointer;
+  /*cursor: pointer;*/
 }
 
 .author {

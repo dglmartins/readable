@@ -3,13 +3,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import SortSelect from './SortSelect';
 import R from 'ramda';
+import PostHeaderRow from './PostHeaderRow';
+import PostOrCommentFooterRow from './PostOrCommentFooterRow';
+import PostBodyRow from './PostBodyRow';
 
 const sortByDescendCurried = ({prop, order}) => R.sort(R[order](R.prop(prop)));
-
-const toDate = (createdAtMilliseconds) => {
-  const date = new Date(createdAtMilliseconds)
-  return date.toDateString();
-}
 
 const PostListView = (props) => (
   <div>
@@ -19,21 +17,8 @@ const PostListView = (props) => (
       <section key={post.id} className="data-view-table-container">
         <table className="data-view-table">
           <tbody>
-            <tr className="data-row">
-              <td className="vote-count">Votes: <span>{post.voteScore}</span></td>
-              <td className="post-title">Title: <span>{post.title}</span></td>
-            </tr>
-            <tr className="data-row">
-              <td colSpan="2">
-                <span className="author">by: {post.author}</span>
-                <span className="time-stamp">{toDate(post.timestamp)} in<span className="category-in-post">{post.category}</span></span>
-                <span className="comments">{post.commentCount} comments</span>
-                <span className="action">edit</span>
-                <span className="action">delete</span>
-                <span className="action">vote up</span>
-                <span className="action">vote down</span>
-              </td>
-            </tr>
+            <PostHeaderRow post={post}/>
+            <PostOrCommentFooterRow postOrComment={post}/>
           </tbody>
         </table>
       </section>

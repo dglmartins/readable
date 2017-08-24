@@ -11,13 +11,13 @@ const Header = (props) => (
     <ul className="nav">
         <li className="category-nav">
           <Link
-            className="router-link"
+            className="router-nav-link"
             to="/">all</Link>
         </li>
         {props.categories.map((category) => (
           <li key={category.name} className="category-nav">
             <Link
-              className="router-link"
+              className="router-nav-link"
               to={`/${category.name}`}>{category.name}</Link>
           </li>
         ))}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import PostListView from './PostListView';
+import PostView from './PostView';
 import Header from './Header';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -43,6 +44,17 @@ class App extends Component {
             }
           />
         ))}
+        {/* {this.props.categories.map((category) => ( */}
+          <Route
+            exact path="/:category/:post_id"
+            render={({ match }) => {
+              console.log(this.props.posts.filter((post) => (post.id === match.params.post_id && post.category === match.params.category))[0])
+              return <PostView
+                post={this.props.posts.filter((post) => (post.id === match.params.post_id && post.category === match.params.category))[0]}
+              />}
+            }
+          />
+
         {/* <Route path='/:category' render={({match}) => (
            <PostListView posts={this.props.posts.filter((post) => (post.category === match.params.category))}/>
         )}/> */}
