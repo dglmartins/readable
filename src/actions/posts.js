@@ -19,7 +19,6 @@ export function getAllPosts () {
 }
 
 export function addCommentCountToPost ({postId, commentCount}) {
-  console.log(commentCount);
   return {
     type: ADD_COMMENT_COUNT_TO_POST,
     postId,

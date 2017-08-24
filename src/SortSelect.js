@@ -6,8 +6,9 @@ import { changeSortByProp, changeSortByOrder } from './actions/sortBy';
 const SortSelect = (props) => (
   <section className="dropdown-container">
     <select onChange={(e) => props.changeSortByProp(e.target.value)} name="sortByProp" className="select-dropdown-input" value={props.sortBy.prop}>
-      <option value="voteScore">sort by votes</option>
-      <option value="timestamp">sort by date</option>
+      {props.sortBy.sortOptions.map((sortOption) => (
+        <option key={sortOption.prop} value={sortOption.prop}>sort by {sortOption.name}</option>
+      ))}
     </select>
     <select onChange={(e) => props.changeSortByOrder(e.target.value)}name="sortByOrder" className="select-dropdown-input" value={props.sortBy.order}>
       <option value="ascend">ascending</option>

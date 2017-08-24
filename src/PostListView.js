@@ -7,9 +7,6 @@ import R from 'ramda';
 const sortByDescendCurried = ({prop, order}) => R.sort(R[order](R.prop(prop)));
 
 const toDate = (createdAtMilliseconds) => {
-  // const oneDayInMilliseconds = 24*60*60*1000;
-  // const date = new Date();
-  // return Math.round(10 * Math.abs((nowDate.getTime() - createdAtMilliseconds)/oneDayInMilliseconds)) / 10
   const date = new Date(createdAtMilliseconds)
   return date.toDateString();
 }
@@ -30,7 +27,7 @@ const PostListView = (props) => (
               <td colSpan="2">
                 <span className="author">by: {post.author}</span>
                 <span className="time-stamp">{toDate(post.timestamp)} in<span className="category-in-post">{post.category}</span></span>
-                <span className="comments">{props.comments.filter((comment) => (comment.parentId === post.id)).length} comments</span>
+                <span className="comments">{post.commentCount} comments</span>
                 <span className="action">edit</span>
                 <span className="action">delete</span>
                 <span className="action">vote up</span>

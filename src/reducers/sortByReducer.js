@@ -1,6 +1,17 @@
 import { CHANGE_SORT_BY_PROP, CHANGE_SORT_BY_ORDER } from '../actions/sortBy';
 
-const intialState = {prop: 'voteScore', order: 'ascend'}
+const intialState = {
+  prop: 'voteScore',
+  order: 'ascend',
+  sortOptions: [
+    {name: 'votes', prop: 'voteScore'},
+    {name: 'date', prop: 'timestamp'},
+    {name: 'title', prop: 'title'},
+    {name: 'comment count', prop: 'commentCount'},
+    {name: 'author', prop: 'author'},
+    {name: 'category', prop: 'category'} 
+  ]
+}
 
 export function sortBy (state = intialState, action) {
   switch (action.type) {
