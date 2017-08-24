@@ -4,21 +4,25 @@ import PostListView from './PostListView';
 import PostView from './PostView';
 import Header from './Header';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Route, Switch } from 'react-router-dom';
 import { getAllPosts, addCommentCountToPost } from './actions/posts';
 import { getAllCategories } from './actions/categories';
 import { getCommentsOfPost } from './actions/comments';
-import { Route } from 'react-router-dom';
+import { spinnerOnOff } from './actions/spinner';
+import Spinner from './Spinner';
+import NoMatch from './NoMatch';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
+    props.spinnerOnOff(true);
     Promise.all([props.getAllPosts(), props.getAllCategories()]).then(([postsArray, categoriesArray]) => {
       Promise.all(postsArray.map((post) =>  props.getCommentsOfPost(post))).then((postIdAndCommentCountArray) => {
         for (const post of postIdAndCommentCountArray) {
           props.addCommentCountToPost({postId: post.id, commentCount: post.commentCount})
         }
+        props.spinnerOnOff(false);
       });
     });
   }
@@ -26,49 +30,51 @@ class App extends Component {
   render() {
     return (
       <div>
+        {this.props.spinner.spinnerOn && (
+          <Spinner/>
+        )}
         <Route path="/" component={Header}/>
-        <Route exact path='/' render={() => (
-           <PostListView
-             category="all"
-             posts={this.props.posts}/>
-        )}/>
-        {this.props.categories.map((category) => (
-          <Route
-            key={category.name}
-            exact path={`/${category.name}`}
-            render={() => (
-              <PostListView
-                category={category.name}
-                posts={this.props.posts.filter((post) => (post.category === category.name))}
-              />)
-            }
-          />
-        ))}
-        {this.props.categories.map((category) => (
-          <Route
-            key={category.name}
-            exact path={`/${category.name}/:post_id`}
-            render={({ match }) => (
-              <PostView
-                post={this.props.posts.filter((post) => (post.id === match.params.post_id && post.category === category.name))[0]}
-              />)
-            }
-          />
-        ))}
-
-
-        {/* <Route path='/:category' render={({match}) => (
-           <PostListView posts={this.props.posts.filter((post) => (post.category === match.params.category))}/>
-        )}/> */}
+        <Switch>
+          <Route exact path='/' render={() => (
+             <PostListView
+               category="all"
+               posts={this.props.posts}/>
+          )}/>
+          {this.props.categories.map((category) => (
+            <Route
+              key={category.name}
+              exact path={`/${category.name}`}
+              render={() => (
+                <PostListView
+                  category={category.name}
+                  posts={this.props.posts.filter((post) => (post.category === category.name))}
+                />)
+              }
+            />
+          ))}
+          {this.props.categories.map((category) => (
+            <Route
+              key={category.name}
+              exact path={`/${category.name}/:post_id`}
+              render={({ match }) => (
+                <PostView
+                  post={this.props.posts.filter((post) => (post.id === match.params.post_id && post.category === category.name))[0]}
+                />)
+              }
+            />
+          ))}
+            <Route path="*" component={NoMatch}/>
+        </Switch>
       </div>
     );
   }
 }
 
-function mapStateToProps ({ posts, categories }) {
+function mapStateToProps ({ posts, categories, spinner }) {
   return {
     posts: Object.keys(posts).map((post) => posts[post]),
-    categories: categories
+    categories,
+    spinner
   };
 }
 
@@ -77,7 +83,8 @@ function mapDispatchToProps (dispatch) {
     getAllPosts: () => dispatch(getAllPosts()),
     getAllCategories: () => dispatch(getAllCategories()),
     getCommentsOfPost: (data) => dispatch(getCommentsOfPost(data)),
-    addCommentCountToPost: (data) => dispatch(addCommentCountToPost(data))
+    addCommentCountToPost: (data) => dispatch(addCommentCountToPost(data)),
+    spinnerOnOff: (data) => dispatch(spinnerOnOff(data))
 
   };
 }
