@@ -5,7 +5,6 @@ import SortSelect from './SortSelect';
 import R from 'ramda';
 import PostHeaderRow from './PostHeaderRow';
 import PostOrCommentFooterRow from './PostOrCommentFooterRow';
-import PostBodyRow from './PostBodyRow';
 
 const sortByDescendCurried = ({prop, order}) => R.sort(R[order](R.prop(prop)));
 

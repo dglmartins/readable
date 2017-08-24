@@ -26,7 +26,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header/>
+        <Route path="/" component={Header}/>
         <Route exact path='/' render={() => (
            <PostListView
              category="all"
@@ -44,16 +44,18 @@ class App extends Component {
             }
           />
         ))}
-        {/* {this.props.categories.map((category) => ( */}
+        {this.props.categories.map((category) => (
           <Route
-            exact path="/:category/:post_id"
-            render={({ match }) => {
-              console.log(this.props.posts.filter((post) => (post.id === match.params.post_id && post.category === match.params.category))[0])
-              return <PostView
-                post={this.props.posts.filter((post) => (post.id === match.params.post_id && post.category === match.params.category))[0]}
-              />}
+            key={category.name}
+            exact path={`/${category.name}/:post_id`}
+            render={({ match }) => (
+              <PostView
+                post={this.props.posts.filter((post) => (post.id === match.params.post_id && post.category === category.name))[0]}
+              />)
             }
           />
+        ))}
+
 
         {/* <Route path='/:category' render={({match}) => (
            <PostListView posts={this.props.posts.filter((post) => (post.category === match.params.category))}/>
