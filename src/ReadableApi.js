@@ -41,7 +41,7 @@ export const getPost = (postId) =>
     .then(res => res.json())
     .catch((error) => console.log(error));
 
-export const upVotePost = (postId) =>
+export const votePostUp = (postId) =>
   fetch(`${api}/posts/${postId}`, {
     method: 'POST',
     headers: {
@@ -53,7 +53,7 @@ export const upVotePost = (postId) =>
     .then(res => res.json())
     .catch((error) => console.log(error));
 
-export const downVotePost = (postId) =>
+export const votePostDown = (postId) =>
   fetch(`${api}/posts/${postId}`, {
     method: 'POST',
     headers: {
@@ -104,7 +104,7 @@ export const getComment = (commentId) =>
   .then(res => res.json())
   .catch((error) => console.log(error));
 
-export const upVoteComment = (commentId) =>
+export const voteCommentUp = (commentId) =>
   fetch(`${api}/comments/${commentId}`, {
     method: 'POST',
     headers: {
@@ -116,7 +116,7 @@ export const upVoteComment = (commentId) =>
     .then(res => res.json())
     .catch((error) => console.log(error));
 
-export const downVoteComment = (commentId) =>
+export const voteCommentDown = (commentId) =>
   fetch(`${api}/comments/${commentId}`, {
     method: 'POST',
     headers: {

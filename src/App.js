@@ -5,25 +5,26 @@ import PostView from './PostView';
 import Header from './Header';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch } from 'react-router-dom';
-import { getAllPosts, addCommentCountToPost } from './actions/posts';
-import { getAllCategories } from './actions/categories';
-import { getCommentsOfPost } from './actions/comments';
+import { addCommentCountToPost } from './actions/posts';
 import { spinnerOnOff } from './actions/spinner';
 import Spinner from './Spinner';
 import NoMatch from './NoMatch';
+import { getPostsCategoriesAndCommentsThunk } from './actions/thunkActions';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
+    //synchronous dispatch
     props.spinnerOnOff(true);
-    Promise.all([props.getAllPosts(), props.getAllCategories()]).then(([postsArray, categoriesArray]) => {
-      Promise.all(postsArray.map((post) =>  props.getCommentsOfPost(post))).then((postIdAndCommentCountArray) => {
-        for (const post of postIdAndCommentCountArray) {
-          props.addCommentCountToPost({postId: post.id, commentCount: post.commentCount})
-        }
-        props.spinnerOnOff(false);
-      });
+    //multiple asynchronous dispatches
+    props.getPostsCategoriesAndCommentsThunk().then((postIdAndCommentCountArray) => {
+      //multiple synchronous dispatches
+      for (const post of postIdAndCommentCountArray) {
+        props.addCommentCountToPost({postId: post.id, commentCount: post.commentCount});
+      }
+      //synchronous dispatch
+      props.spinnerOnOff(false);
     });
   }
 
@@ -80,11 +81,9 @@ function mapStateToProps ({ posts, categories, spinner }) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    getAllPosts: () => dispatch(getAllPosts()),
-    getAllCategories: () => dispatch(getAllCategories()),
-    getCommentsOfPost: (data) => dispatch(getCommentsOfPost(data)),
     addCommentCountToPost: (data) => dispatch(addCommentCountToPost(data)),
-    spinnerOnOff: (data) => dispatch(spinnerOnOff(data))
+    spinnerOnOff: (data) => dispatch(spinnerOnOff(data)),
+    getPostsCategoriesAndCommentsThunk: () => dispatch(getPostsCategoriesAndCommentsThunk())
   };
 }
 

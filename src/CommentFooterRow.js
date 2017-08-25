@@ -1,4 +1,7 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { voteCommentUpThunk, voteCommentDownThunk } from './actions/thunkActions';
 import { toDate } from './utils/helpers';
 
 const CommentFooterRow = (props) => (
@@ -8,10 +11,17 @@ const CommentFooterRow = (props) => (
       <span className="time-stamp">{toDate(props.comment.timestamp)}</span>
       <span className="action">edit</span>
       <span className="action">delete</span>
-      <span className="action">vote up</span>
-      <span className="action">vote down</span>
+      <span className="action" onClick={() => props.voteCommentUpThunk(props.comment.id)}>vote up</span>
+      <span className="action" onClick={() => props.voteCommentDownThunk(props.comment.id)}>vote down</span>
     </td>
   </tr>
 );
 
-export default CommentFooterRow;
+function mapDispatchToProps (dispatch) {
+  return {
+    voteCommentUpThunk: (data) => dispatch(voteCommentUpThunk(data)),
+    voteCommentDownThunk: (data) => dispatch(voteCommentDownThunk(data))
+  };
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(CommentFooterRow));
