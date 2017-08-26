@@ -140,7 +140,7 @@ export const updateComment = (body, commentId) =>
     .then(res => res.json())
     .catch((error) => console.log(error));
 
-export const removeComment = (commentId) =>
+export const deleteComment = (commentId) =>
   fetch(`${api}/comments/${commentId}`, { method: 'DELETE', headers })
     .then(res => res.json())
     .catch((error) => console.log(error));

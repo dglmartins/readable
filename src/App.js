@@ -5,7 +5,6 @@ import PostView from './PostView';
 import Header from './Header';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch } from 'react-router-dom';
-import { addCommentCountToPost } from './actions/posts';
 import { spinnerOnOff } from './actions/spinner';
 import Spinner from './Spinner';
 import NoMatch from './NoMatch';
@@ -19,10 +18,6 @@ class App extends Component {
     props.spinnerOnOff(true);
     //multiple asynchronous dispatches
     props.getPostsCategoriesAndCommentsThunk().then((postIdAndCommentCountArray) => {
-      //multiple synchronous dispatches
-      for (const post of postIdAndCommentCountArray) {
-        props.addCommentCountToPost({postId: post.id, commentCount: post.commentCount});
-      }
       //synchronous dispatch
       props.spinnerOnOff(false);
     });
@@ -81,7 +76,6 @@ function mapStateToProps ({ posts, categories, spinner }) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    addCommentCountToPost: (data) => dispatch(addCommentCountToPost(data)),
     spinnerOnOff: (data) => dispatch(spinnerOnOff(data)),
     getPostsCategoriesAndCommentsThunk: () => dispatch(getPostsCategoriesAndCommentsThunk())
   };

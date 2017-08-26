@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { voteCommentUpThunk, voteCommentDownThunk } from './actions/thunkActions';
+import { voteCommentUpThunk, voteCommentDownThunk, deleteCommentThunk } from './actions/thunkActions';
 import { toDate } from './utils/helpers';
 
 const CommentFooterRow = (props) => (
@@ -10,7 +10,7 @@ const CommentFooterRow = (props) => (
       <span className="author">by: {props.comment.author}</span>
       <span className="time-stamp">{toDate(props.comment.timestamp)}</span>
       <span className="action">edit</span>
-      <span className="action">delete</span>
+      <span className="action" onClick={() => props.deleteCommentThunk(props.comment.id)}>delete</span>
       <span className="action" onClick={() => props.voteCommentUpThunk(props.comment.id)}>vote up</span>
       <span className="action" onClick={() => props.voteCommentDownThunk(props.comment.id)}>vote down</span>
     </td>
@@ -20,7 +20,8 @@ const CommentFooterRow = (props) => (
 function mapDispatchToProps (dispatch) {
   return {
     voteCommentUpThunk: (data) => dispatch(voteCommentUpThunk(data)),
-    voteCommentDownThunk: (data) => dispatch(voteCommentDownThunk(data))
+    voteCommentDownThunk: (data) => dispatch(voteCommentDownThunk(data)),
+    deleteCommentThunk: (data) => dispatch(deleteCommentThunk(data))
   };
 }
 

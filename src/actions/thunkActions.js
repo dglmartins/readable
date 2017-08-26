@@ -1,5 +1,5 @@
 import { getPosts, votePostUp, votePostDown } from './posts';
-import { getCommentsOfPost, voteCommentUp, voteCommentDown } from './comments';
+import { getCommentsOfPost, voteCommentUp, voteCommentDown, deleteComment } from './comments';
 import { getCategories } from './categories';
 
 
@@ -79,5 +79,14 @@ export function voteCommentDownThunk (commentId) {
       .then((comment) => {
         dispatch(voteCommentDown(comment.id));
       });
+  }
+}
+
+export function deleteCommentThunk (commentId) {
+  return function(dispatch, getState, ReadableApi) {
+    return ReadableApi.deleteComment(commentId)
+      .then((comment) => {
+        dispatch(deleteComment(comment.id))
+      })
   }
 }

@@ -17,7 +17,10 @@ const PostListView = (props) => (
         <table className="data-view-table">
           <tbody>
             <PostHeaderRow post={post}/>
-            <PostFooterRow post={post}/>
+            <PostFooterRow
+              post={post}
+              comments={props.comments}
+            />
           </tbody>
         </table>
       </section>

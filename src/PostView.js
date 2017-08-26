@@ -14,7 +14,10 @@ const PostView = (props) => (
           <tbody>
             <PostHeaderRow post={props.post}/>
             <PostBodyRow post={props.post}/>
-            <PostFooterRow post={props.post}/>
+            <PostFooterRow
+              post={props.post}
+              comments={props.comments}
+            />
           </tbody>
         </table>
         <CommentsListView comments={props.comments.filter((comment) => (comment.parentId === props.post.id))}/>
