@@ -1,4 +1,4 @@
-import { getPosts, votePostUp, votePostDown } from './posts';
+import { getPosts, votePostUp, votePostDown, deletePost } from './posts';
 import { getCommentsOfPost, voteCommentUp, voteCommentDown, deleteComment } from './comments';
 import { getCategories } from './categories';
 
@@ -88,5 +88,16 @@ export function deleteCommentThunk (commentId) {
       .then((comment) => {
         dispatch(deleteComment(comment.id))
       })
+  }
+}
+
+export function deletePostThunk (postId) {
+  return function(dispatch, getState, ReadableApi) {
+    return ReadableApi.deletePost(postId)
+      .then(() => {
+        dispatch(deletePost(postId))
+        return postId;
+      })
+
   }
 }

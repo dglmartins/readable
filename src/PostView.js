@@ -20,7 +20,7 @@ const PostView = (props) => (
             />
           </tbody>
         </table>
-        <CommentsListView comments={props.comments.filter((comment) => (comment.parentId === props.post.id))}/>
+        <CommentsListView comments={props.comments.filter((comment) => (comment.parentId === props.post.id && comment.deleted === false))}/>
       </section>
     )}
   </div>

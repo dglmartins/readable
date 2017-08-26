@@ -1,7 +1,7 @@
-import { GET_ALL_POSTS, VOTE_POST_UP, VOTE_POST_DOWN } from '../actions/posts';
+import { GET_ALL_POSTS, VOTE_POST_UP, VOTE_POST_DOWN, DELETE_POST} from '../actions/posts';
 
 export function posts (state = {}, action) {
-  const { postId, commentCount } = action;
+  const { postId } = action;
   switch (action.type) {
     case GET_ALL_POSTS:
       const posts = action.posts.reduce((accumulator, value) => {
@@ -27,6 +27,16 @@ export function posts (state = {}, action) {
           voteScore: state[postId]["voteScore"] - 1
         }
       };
+
+    case DELETE_POST:
+      return {
+        ...state,
+        [postId]: {
+          ...state[postId],
+          deleted: true
+        }
+      };
+
 
     default:
       return state;

@@ -66,11 +66,12 @@ class App extends Component {
   }
 }
 
-function mapStateToProps ({ posts, categories, spinner }) {
+function mapStateToProps ({ posts, categories, spinner, comments }) {
   return {
-    posts: Object.keys(posts).map((post) => posts[post]),
+    posts: Object.keys(posts).map((post) => posts[post]).filter((post) => (post.deleted === false)),
     categories,
-    spinner
+    spinner,
+    comments: Object.keys(comments).map((comment) => comments[comment])
   };
 }
 

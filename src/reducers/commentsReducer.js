@@ -1,5 +1,4 @@
-import { GET_COMMENTS_OF_POST, VOTE_COMMENT_UP, VOTE_COMMENT_DOWN, DELETE_COMMENT } from '../actions/comments';
-import R from 'ramda';
+import { GET_COMMENTS_OF_POST, VOTE_COMMENT_UP, VOTE_COMMENT_DOWN, DELETE_COMMENT, DELETE_PARENT_IN_COMMENT } from '../actions/comments';
 
 export function comments (state = {}, action) {
   const { commentId } = action;
@@ -30,8 +29,22 @@ export function comments (state = {}, action) {
       };
 
     case DELETE_COMMENT:
-    //R.dissoc(prop, object) is Ramda function returns a new Object that contains the old object without the passed prop.
-      return R.dissoc(commentId, state);
+      return {
+        ...state,
+        [commentId]: {
+          ...state[commentId],
+          deleted: true
+        }
+      };
+
+    case DELETE_PARENT_IN_COMMENT:
+      return {
+        ...state,
+        [commentId]: {
+          ...state[commentId],
+          parentDeleted: true
+        }
+      };
 
     default:
       return state;

@@ -77,10 +77,16 @@ export const updatePost = (body, postId) =>
     .then(res => res.json())
     .catch((error) => console.log(error));
 
-export const removePost = (postId) =>
-  fetch(`${api}/posts/${postId}`, { method: 'DELETE', headers })
-    .then(res => res.json())
-    .catch((error) => console.log(error));
+export const deletePost = (postId) =>
+  fetch(`${api}/posts/${postId}`, {
+    method: 'DELETE',
+    headers: {
+      ...headers,
+      'Content-type': 'application/json'
+    }
+  })
+    .then(res => res)
+    .catch((error) => alert(error));
 
 export const getCommentsOfPost = (postId) =>
   fetch(`${api}/posts/${postId}/comments`, { headers })
