@@ -2,6 +2,7 @@ export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const VOTE_POST_UP = 'VOTE_POST_UP';
 export const VOTE_POST_DOWN = 'VOTE_POST_DOWN';
 export const DELETE_POST = 'DELETE_POST';
+export const CREATE_POST = 'CREATE_POST';
 
 export function getPosts (posts) {
   return {
@@ -28,5 +29,12 @@ export function deletePost (postId) {
   return {
     type: DELETE_POST,
     postId
+  }
+}
+
+export function createPost (post) {
+  return {
+    type: CREATE_POST,
+    post
   }
 }

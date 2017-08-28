@@ -1,7 +1,13 @@
-import { GET_ALL_POSTS, VOTE_POST_UP, VOTE_POST_DOWN, DELETE_POST} from '../actions/posts';
+import {
+  GET_ALL_POSTS,
+  VOTE_POST_UP,
+  VOTE_POST_DOWN,
+  DELETE_POST,
+  CREATE_POST
+} from '../actions/posts';
 
 export function posts (state = {}, action) {
-  const { postId } = action;
+  const { post, postId } = action;
   switch (action.type) {
     case GET_ALL_POSTS:
       const posts = action.posts.reduce((accumulator, value) => {
@@ -37,6 +43,11 @@ export function posts (state = {}, action) {
         }
       };
 
+    case CREATE_POST:
+      return {
+        ...state,
+        [post.id]: post
+      };
 
     default:
       return state;

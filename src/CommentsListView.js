@@ -5,6 +5,7 @@ import CommentFooterRow from './CommentFooterRow';
 const CommentsListView = (props) => (
   <div>
     <h3>{props.comments.length} comments</h3>
+    <div className="comments-list">
       {props.comments.map((comment) => (
         <section key={comment.id} className="comment-view-table-container">
           <table className="data-view-table">
@@ -15,6 +16,7 @@ const CommentsListView = (props) => (
           </table>
         </section>
       ))}
+    </div>
   </div>
 );
 

@@ -21,7 +21,11 @@ const Header = (props) => (
               to={`/${category.name}`}>{category.name}</Link>
           </li>
         ))}
-        <li className="add-post-nav"><a>new post</a></li>
+        <li className="add-post-nav">
+          <Link
+          className="router-nav-create-post"
+          to="/createPost">create post</Link>
+        </li>
     </ul>
   </section>
 );

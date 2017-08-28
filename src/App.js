@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import CreatePost from './CreatePost';
 import PostListView from './PostListView';
 import PostView from './PostView';
 import Header from './Header';
@@ -36,6 +37,7 @@ class App extends Component {
                category="all"
                posts={this.props.posts}/>
           )}/>
+          <Route exact path="/createPost" component={CreatePost}/>
           {this.props.categories.map((category) => (
             <Route
               key={category.name}

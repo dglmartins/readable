@@ -37,6 +37,12 @@
 	cursor: pointer;
 }
 
+.router-nav-create-post {
+  text-decoration: none;
+  color: #fb6542;
+	cursor: pointer;
+}
+
 .router-nav-link {
   text-decoration: none;
 	color: #ffbb00;
@@ -63,7 +69,6 @@
   margin:0 0 0 1em;
   border-left: 1px solid #fb6542;
   padding: 0 0 0 1em;
-	color: #fb6542;
 	cursor: pointer;
   text-align: left
 }
@@ -145,6 +150,11 @@
   cursor: pointer;
 }
 
+.comments-list {
+  max-height: 15em;
+  overflow: auto;
+}
+
 
 .comments {
   font-size: 0.75em;
@@ -162,6 +172,7 @@
   font-style: italic;
   color: #3f681c;
   font-size: 0.9em;
+  width: 95%;
 }
 
 .vote-count {
@@ -169,7 +180,7 @@
   background-color: #fb6542;
   color: white;
   padding: 0.25em;
-  width: 2em;
+  width: 5%;
 }
 
 .dropdown-container {
@@ -244,6 +255,10 @@
   /*border: 1px solid black;*/
 }
 
+.create-post-title {
+  margin: 1em 0;
+  width: 100%;
+}
 
 
 

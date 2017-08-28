@@ -3,7 +3,7 @@ export const VOTE_COMMENT_UP = 'VOTE_COMMENT_UP';
 export const VOTE_COMMENT_DOWN = 'VOTE_COMMENT_DOWN';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const DELETE_PARENT_IN_COMMENT = 'DELETE_PARENT_IN_COMMENT';
-export const ADD_NEW_COMMENT = 'ADD_NEW_COMMENT';
+export const CREATE_COMMENT = 'CREATE_COMMENT';
 
 export function getCommentsOfPost(comments) {
   return {
@@ -40,9 +40,9 @@ export function deleteParentInComment (commentId) {
   }
 }
 
-export function addNewComment (comment) {
+export function createComment (comment) {
   return {
-    type: ADD_NEW_COMMENT,
+    type: CREATE_COMMENT,
     comment
   }
 }
