@@ -143,6 +143,11 @@
   color: #fb6542;
 }
 
+.edit-link {
+  text-decoration: none;
+  color: #fb6542;
+}
+
 .category-in-post {
   font-size: 0.75em;
   padding-left: 0.25em;
@@ -203,7 +208,8 @@
 }
 .back-arrow {
   display: block;
-  width: 100%;
+  margin: 0 auto;
+  width: 5%;
   height: 53px;
   background: white;
   background-image: url('./icons/arrow-back.svg');

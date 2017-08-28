@@ -3,7 +3,8 @@ import {
   VOTE_POST_UP,
   VOTE_POST_DOWN,
   DELETE_POST,
-  CREATE_POST
+  CREATE_POST,
+  UPDATE_POST
 } from '../actions/posts';
 
 export function posts (state = {}, action) {
@@ -44,6 +45,12 @@ export function posts (state = {}, action) {
       };
 
     case CREATE_POST:
+      return {
+        ...state,
+        [post.id]: post
+      };
+
+    case UPDATE_POST:
       return {
         ...state,
         [post.id]: post

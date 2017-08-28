@@ -3,6 +3,7 @@ export const VOTE_POST_UP = 'VOTE_POST_UP';
 export const VOTE_POST_DOWN = 'VOTE_POST_DOWN';
 export const DELETE_POST = 'DELETE_POST';
 export const CREATE_POST = 'CREATE_POST';
+export const UPDATE_POST = 'UPDATE_POST';
 
 export function getPosts (posts) {
   return {
@@ -35,6 +36,13 @@ export function deletePost (postId) {
 export function createPost (post) {
   return {
     type: CREATE_POST,
+    post
+  }
+}
+
+export function updatePost (post) {
+  return {
+    type: UPDATE_POST,
     post
   }
 }

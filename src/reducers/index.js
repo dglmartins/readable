@@ -10,5 +10,5 @@ export default combineReducers({
   comments,
   posts,
   sortBy,
-  spinner
+  spinner,
 });

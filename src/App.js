@@ -4,6 +4,7 @@ import CreatePost from './CreatePost';
 import PostListView from './PostListView';
 import PostView from './PostView';
 import Header from './Header';
+import EditPost from './EditPost'
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch } from 'react-router-dom';
 import { spinnerOnOff } from './actions/spinner';
@@ -25,6 +26,8 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props)
+
     return (
       <div>
         {this.props.spinner.spinnerOn && (
@@ -36,6 +39,10 @@ class App extends Component {
              <PostListView
                category="all"
                posts={this.props.posts}/>
+          )}/>
+          <Route exact path='/editPost/:post_id' render={({ match }) => (
+             <EditPost
+               post={this.props.posts.filter((post) => (post.id === match.params.post_id))[0]}/>
           )}/>
           <Route exact path="/createPost" component={CreatePost}/>
           {this.props.categories.map((category) => (

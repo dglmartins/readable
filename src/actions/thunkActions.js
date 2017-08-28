@@ -1,4 +1,4 @@
-import { getPosts, votePostUp, votePostDown, deletePost, createPost } from './posts';
+import { getPosts, votePostUp, votePostDown, deletePost, createPost, updatePost } from './posts';
 import { getCommentsOfPost, voteCommentUp, voteCommentDown, deleteComment, createComment } from './comments';
 import { getCategories } from './categories';
 
@@ -118,6 +118,16 @@ export function createPostThunk (post) {
     return ReadableApi.createPost(post)
       .then((post) => {
         dispatch(createPost(post))
+      })
+  }
+}
+
+export function updatePostThunk (update) {
+  console.log(update)
+  return function(dispatch, getState, ReadableApi) {
+    return ReadableApi.updatePost(update.body, update.id)
+      .then((post) => {
+        dispatch(updatePost(post))
       })
   }
 }

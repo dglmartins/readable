@@ -24,7 +24,7 @@ const PostFooterRow = (props) => (
       <Link to={`/${props.post.category}/${props.post.id}`} className="comments">{props.comments.filter((comment) =>
         (comment.parentId === props.post.id && comment.deleted === false)
       ).length} comments</Link>
-      <span className="action">edit</span>
+      <span className="action"><Link className="edit-link" to={`/editPost/${props.post.id}`}>edit</Link></span>
       <span className="action" onClick={() => onPostDelete(props)}>delete</span>
       <span className="action" onClick={() => props.votePostUpThunk(props.post.id)}>vote up</span>
       <span className="action" onClick={() => props.votePostDownThunk(props.post.id)}>vote down</span>
