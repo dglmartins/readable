@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { createPostThunk } from './actions/thunkActions';
+import { createPostThunk } from '../actions/thunkActions';
 
 import uuidv4 from  'uuid/v4';
 

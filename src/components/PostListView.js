@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import SortSelect from './SortSelect';
 import PostHeaderRow from './PostHeaderRow';
 import PostFooterRow from './PostFooterRow';
-import { sortByCurried } from './utils/helpers';
+import { sortByCurried } from '../utils/helpers';
 
 const PostListView = (props) => (
   <div>

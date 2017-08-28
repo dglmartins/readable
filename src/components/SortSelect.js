@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { changeSortByProp, changeSortByOrder } from './actions/sortBy';
+import { changeSortByProp, changeSortByOrder } from '../actions/sortBy';
 
 const SortSelect = (props) => (
   <section className="dropdown-container">

@@ -1,14 +1,17 @@
 import {
   GET_ALL_POSTS,
+  GET_COMMENT_COUNT,
   VOTE_POST_UP,
   VOTE_POST_DOWN,
   DELETE_POST,
   CREATE_POST,
-  UPDATE_POST
+  UPDATE_POST,
+  INCREMENT_COMMENT_COUNT,
+  DECREMENT_COMMENT_COUNT
 } from '../actions/posts';
 
 export function posts (state = {}, action) {
-  const { post, postId } = action;
+  const { post, postId, initialCommentCount } = action;
   switch (action.type) {
     case GET_ALL_POSTS:
       const posts = action.posts.reduce((accumulator, value) => {
@@ -16,6 +19,33 @@ export function posts (state = {}, action) {
         return accumulator
       }, {});
       return Object.assign({}, state, posts);
+
+    case GET_COMMENT_COUNT:
+      return {
+        ...state,
+        [postId]: {
+          ...state[postId],
+          commentCount: initialCommentCount
+        }
+      };
+
+    case INCREMENT_COMMENT_COUNT:
+      return {
+        ...state,
+        [postId]: {
+          ...state[postId],
+          commentCount: state[postId]["commentCount"] + 1
+        }
+      };
+
+    case DECREMENT_COMMENT_COUNT:
+      return {
+        ...state,
+        [postId]: {
+          ...state[postId],
+          commentCount: state[postId]["commentCount"] - 1
+        }
+      };
 
     case VOTE_POST_UP:
       return {

@@ -10,21 +10,21 @@ export function getCommentsOfPost(comments) {
   return {
     type: GET_COMMENTS_OF_POST,
     comments
-  }
-};
+  };
+}
 
 export function voteCommentUp (commentId) {
   return {
     type: VOTE_COMMENT_UP,
     commentId
-  }
+  };
 }
 
 export function voteCommentDown (commentId) {
   return {
     type: VOTE_COMMENT_DOWN,
     commentId
-  }
+  };
 }
 
 export function deleteComment (commentId) {
@@ -38,19 +38,19 @@ export function deleteParentInComment (commentId) {
   return {
     type: DELETE_PARENT_IN_COMMENT,
     commentId
-  }
+  };
 }
 
 export function createComment (comment) {
   return {
     type: CREATE_COMMENT,
     comment
-  }
+  };
 }
 
 export function updateComment (comment) {
   return {
     type: UPDATE_COMMENT,
     comment
-  }
+  };
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateCommentThunk } from './actions/thunkActions';
+import { updateCommentThunk } from '../actions/thunkActions';
 
 class UpdateComment extends Component {
 

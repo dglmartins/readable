@@ -4,5 +4,5 @@ export function spinnerOnOff (spinner) {
   return {
     type: SPINNER_ON_OFF,
     spinner
-  }
+  };
 };

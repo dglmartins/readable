@@ -1,8 +1,7 @@
 import React from 'react';
 import MdLibraryBooks from 'react-icons/lib/md/library-books';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 const Header = (props) => (
   <section className="header">

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { createCommentThunk } from './actions/thunkActions';
+import { incrementCommentCount } from '../actions/posts';
+import { createCommentThunk } from '../actions/thunkActions';
 
 import uuidv4 from  'uuid/v4';
 
@@ -14,7 +15,9 @@ class CreateComment extends Component {
     const author = event.target.elements.author.value;
     const body = event.target.elements.body.value;
     const parentId = this.props.postId
-    this.props.createCommentThunk({id, timestamp, body, author, parentId});
+    this.props.createCommentThunk({id, timestamp, body, author, parentId}).then(() => {
+      this.props.incrementCommentCount(this.props.postId)
+    });
     event.target.elements.author.value = '';
     event.target.elements.body.value = ''
   };
@@ -37,7 +40,8 @@ class CreateComment extends Component {
 
 function mapDispatchToProps (dispatch) {
   return {
-    createCommentThunk: (data) => dispatch(createCommentThunk(data))
+    createCommentThunk: (data) => dispatch(createCommentThunk(data)),
+    incrementCommentCount: (data) => dispatch(incrementCommentCount(data))
   };
 }
 

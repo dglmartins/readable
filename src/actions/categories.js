@@ -4,7 +4,7 @@ export function getCategories (categories) {
   return {
     type: GET_ALL_CATEGORIES,
     categories
-  }
+  };
 };
 
 // export function getAllCategories () {

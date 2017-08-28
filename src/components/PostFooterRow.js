@@ -1,9 +1,9 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { votePostUpThunk, votePostDownThunk, deletePostThunk } from './actions/thunkActions';
-import { deleteParentInComment } from './actions/comments';
-import { toDate } from './utils/helpers';
+import { votePostUpThunk, votePostDownThunk, deletePostThunk } from '../actions/thunkActions';
+import { deleteParentInComment } from '../actions/comments';
+import { toDate } from '../utils/helpers';
 
 const onPostDelete = ({post, deletePostThunk, deleteParentInComment, comments}) => {
   //asynchronous
