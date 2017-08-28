@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { initializeCommentCount } from '../actions/posts';
 import { createPostThunk } from '../actions/thunkActions';
 
 import uuidv4 from  'uuid/v4';
@@ -19,7 +20,9 @@ class CreatePost extends Component {
     const author = event.target.elements.author.value;
     const body = event.target.elements.body.value;
     const category = event.target.elements.category.value;
-    this.props.createPostThunk({id, timestamp, title, body, author, category});
+    this.props.createPostThunk({id, timestamp, title, body, author, category}).then(() => {
+      this.props.initializeCommentCount(id);
+    });
     event.target.elements.author.value = '';
     event.target.elements.title.value = '';
     event.target.elements.body.value = ''
@@ -60,7 +63,8 @@ function mapStateToProps ({ categories }) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    createPostThunk: (data) => dispatch(createPostThunk(data))
+    createPostThunk: (data) => dispatch(createPostThunk(data)),
+    initializeCommentCount: (data) => dispatch(initializeCommentCount(data))
   };
 }
 

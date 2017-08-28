@@ -7,7 +7,8 @@ import {
   CREATE_POST,
   UPDATE_POST,
   INCREMENT_COMMENT_COUNT,
-  DECREMENT_COMMENT_COUNT
+  DECREMENT_COMMENT_COUNT,
+  INITALIZE_COMMENT_COUNT
 } from '../actions/posts';
 
 export function posts (state = {}, action) {
@@ -44,6 +45,15 @@ export function posts (state = {}, action) {
         [postId]: {
           ...state[postId],
           commentCount: state[postId]["commentCount"] - 1
+        }
+      };
+
+    case INITALIZE_COMMENT_COUNT:
+      return {
+        ...state,
+        [postId]: {
+          ...state[postId],
+          commentCount: 0
         }
       };
 

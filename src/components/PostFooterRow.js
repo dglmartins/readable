@@ -21,9 +21,7 @@ const PostFooterRow = (props) => (
     <td colSpan="2">
       <span className="author">by: {props.post.author}</span>
       <span className="time-stamp">{toDate(props.post.timestamp)} in<Link to={`/${props.post.category}`} className="category-in-post">{props.post.category}</Link></span>
-      <Link to={`/${props.post.category}/${props.post.id}`} className="comments">{props.comments.filter((comment) =>
-        (comment.parentId === props.post.id && comment.deleted === false)
-      ).length} comments</Link>
+      <Link to={`/${props.post.category}/${props.post.id}`} className="comments">{props.post.commentCount} comments</Link>
       <span className="action"><Link className="edit-link" to={`/updatePost/${props.post.id}`}>edit</Link></span>
       <span className="action" onClick={() => onPostDelete(props)}>delete</span>
       <span className="action" onClick={() => props.votePostUpThunk(props.post.id)}>vote up</span>

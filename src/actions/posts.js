@@ -7,6 +7,7 @@ export const UPDATE_POST = 'UPDATE_POST';
 export const GET_COMMENT_COUNT = 'GET_COMMENT_COUNT';
 export const INCREMENT_COMMENT_COUNT = 'INCREMENT_COMMENT_COUNT';
 export const DECREMENT_COMMENT_COUNT = 'DECREMENT_COMMENT_COUNT';
+export const INITALIZE_COMMENT_COUNT = 'INITALIZE_COMMENT_COUNT';
 
 export function getPosts (posts) {
   return {
@@ -27,6 +28,13 @@ export function incrementCommentCount (postId) {
   return {
     type: INCREMENT_COMMENT_COUNT,
     postId,
+  };
+}
+
+export function initializeCommentCount (postId) {
+  return {
+    type: INITALIZE_COMMENT_COUNT,
+    postId
   };
 }
 

@@ -81,8 +81,8 @@ export function deletePostThunk (postId) {
 export function createPostThunk (post) {
   return function(dispatch, getState, ReadableApi) {
     return ReadableApi.createPost(post)
-      .then((post) => {
-        dispatch(createPost(post))
+      .then((newPost) => {
+        dispatch(createPost(newPost))
     })
   };
 };
