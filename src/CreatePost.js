@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createPostThunk } from './actions/thunkActions';
 
@@ -26,8 +26,6 @@ class CreatePost extends Component {
     this.props.history.push('/');
   };
   render () {
-    console.log(this.props)
-
     return (
       <div className="new-comment-container">
         <h3>Add a post</h3>
@@ -45,6 +43,11 @@ class CreatePost extends Component {
             <button>Add Post</button>
           </div>
         </form>
+        <div>
+            <Link className="back-arrow"
+              to="/">
+            </Link>
+        </div>
       </div>
     );
   }

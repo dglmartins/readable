@@ -5,7 +5,7 @@ import PostHeaderRow from './PostHeaderRow';
 import PostBodyRow from './PostBodyRow';
 import PostFooterRow from './PostFooterRow';
 import CommentsListView from './CommentsListView';
-import NewComment from './NewComment';
+import CreateComment from './CreateComment';
 
 const PostView = (props) => (
   <div>
@@ -24,7 +24,7 @@ const PostView = (props) => (
           </table>
           <CommentsListView comments={props.comments.filter((comment) => (comment.parentId === props.post.id && comment.deleted === false))}/>
         </section>
-        <NewComment postId={props.post.id}/>
+        <CreateComment postId={props.post.id}/>
       </div>
     )}
     {!props.post && (

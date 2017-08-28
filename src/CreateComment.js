@@ -5,7 +5,7 @@ import { createCommentThunk } from './actions/thunkActions';
 
 import uuidv4 from  'uuid/v4';
 
-class NewComment extends Component {
+class CreateComment extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -41,4 +41,4 @@ function mapDispatchToProps (dispatch) {
   };
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(NewComment));
+export default withRouter(connect(null, mapDispatchToProps)(CreateComment));
