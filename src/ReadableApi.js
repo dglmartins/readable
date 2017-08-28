@@ -85,7 +85,7 @@ export const deletePost = (postId) =>
       'Content-type': 'application/json'
     }
   })
-    .then(res => res)
+    .then(res => res.json())
     .catch((error) => alert(error));
 
 export const getCommentsOfPost = (postId) =>
@@ -93,7 +93,7 @@ export const getCommentsOfPost = (postId) =>
     .then(res => res.json())
     .catch((error) => console.log(error));
 
-export const createComment = (body) =>
+export const addNewComment = (body) =>
   fetch(`${api}/comments`, {
     method: 'POST',
     headers: {

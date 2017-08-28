@@ -5,6 +5,7 @@ import PostHeaderRow from './PostHeaderRow';
 import PostBodyRow from './PostBodyRow';
 import PostFooterRow from './PostFooterRow';
 import CommentsListView from './CommentsListView';
+import NewComment from './NewComment';
 
 const PostView = (props) => (
   <div>
@@ -23,6 +24,7 @@ const PostView = (props) => (
         <CommentsListView comments={props.comments.filter((comment) => (comment.parentId === props.post.id && comment.deleted === false))}/>
       </section>
     )}
+    <NewComment postId={props.post.id}/>
   </div>
 );
 

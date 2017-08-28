@@ -1,7 +1,14 @@
-import { GET_COMMENTS_OF_POST, VOTE_COMMENT_UP, VOTE_COMMENT_DOWN, DELETE_COMMENT, DELETE_PARENT_IN_COMMENT } from '../actions/comments';
+import {
+  GET_COMMENTS_OF_POST,
+  VOTE_COMMENT_UP,
+  VOTE_COMMENT_DOWN,
+  DELETE_COMMENT,
+  DELETE_PARENT_IN_COMMENT,
+  ADD_NEW_COMMENT
+} from '../actions/comments';
 
 export function comments (state = {}, action) {
-  const { commentId } = action;
+  const { comment, commentId } = action;
   switch (action.type) {
     case GET_COMMENTS_OF_POST:
       const comments = action.comments.reduce((accumulator, value) => {
@@ -44,6 +51,12 @@ export function comments (state = {}, action) {
           ...state[commentId],
           parentDeleted: true
         }
+      };
+
+    case ADD_NEW_COMMENT:
+      return {
+        ...state,
+        [comment.id]: comment
       };
 
     default:

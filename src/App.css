@@ -230,6 +230,22 @@
     100% { transform: rotate(360deg); }
 }
 
+.new-comment-container {
+  margin-left: 2em;
+}
+
+.input-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.text-area {
+  width: 100%;
+  /*border: 1px solid black;*/
+}
+
+
+
 
 
 /*3f681c

@@ -5,7 +5,6 @@ import { posts } from './postsReducer';
 import { sortBy } from './sortByReducer';
 import { spinner } from './spinnerReducer';
 
-
 export default combineReducers({
   categories,
   comments,

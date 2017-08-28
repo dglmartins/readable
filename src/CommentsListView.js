@@ -15,7 +15,6 @@ const CommentsListView = (props) => (
           </table>
         </section>
       ))}
-
   </div>
 );
 
