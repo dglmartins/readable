@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateCommentThunk } from './actions/thunkActions';
 
@@ -10,15 +10,13 @@ class UpdateComment extends Component {
     const body = event.target.elements.body.value;
     const timestamp = new Date().getTime();
     const id = this.props.comment.id;
-    const parentPost = this.props.posts.filter((post) =>
-    (post.id === this.props.comment.parentId))[0];
     const update = { body: {timestamp, body}, id };
     if (body === this.props.comment.body) {
       alert("Please change something!");
       return;
     } else {
       this.props.updateCommentThunk(update);
-      this.props.history.push(`/${parentPost.category}/${parentPost.id}`);
+      this.props.history.goBack();
     }
   };
 
@@ -36,19 +34,12 @@ class UpdateComment extends Component {
           )}
         </form>
         <div>
-            <Link className="back-arrow"
-              to="/">
-            </Link>
+          <span className="back-arrow" onClick={() => this.props.history.goBack()}>
+          </span>
         </div>
       </div>
     );
   }
-}
-
-function mapStateToProps ({ posts }) {
-  return {
-    posts: Object.keys(posts).map((post) => posts[post])
-  };
 }
 
 function mapDispatchToProps (dispatch) {
@@ -57,4 +48,4 @@ function mapDispatchToProps (dispatch) {
   };
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UpdateComment));
+export default withRouter(connect(null, mapDispatchToProps)(UpdateComment));
