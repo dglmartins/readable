@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updatePostThunk } from './actions/thunkActions';
 
-class EditPost extends Component {
+class UpdatePost extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -24,7 +24,7 @@ class EditPost extends Component {
     return (
       <div className="new-comment-container">
         <h3>Edit post</h3>
-        <form name="editCommentForm" onSubmit={this.handleSubmit}>
+        <form name="editPostForm" onSubmit={this.handleSubmit}>
           {this.props.post && (
             <div className="input-container">
               <input name="title" type="text" placeholder="Post title" className="create-post-title" defaultValue={this.props.post.title} required/>
@@ -49,4 +49,4 @@ function mapDispatchToProps (dispatch) {
   };
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(EditPost));
+export default withRouter(connect(null, mapDispatchToProps)(UpdatePost));

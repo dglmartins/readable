@@ -4,7 +4,8 @@ import {
   VOTE_COMMENT_DOWN,
   DELETE_COMMENT,
   DELETE_PARENT_IN_COMMENT,
-  CREATE_COMMENT
+  CREATE_COMMENT,
+  UPDATE_COMMENT
 } from '../actions/comments';
 
 export function comments (state = {}, action) {
@@ -54,6 +55,12 @@ export function comments (state = {}, action) {
       };
 
     case CREATE_COMMENT:
+      return {
+        ...state,
+        [comment.id]: comment
+      };
+
+    case UPDATE_COMMENT:
       return {
         ...state,
         [comment.id]: comment

@@ -4,7 +4,8 @@ import CreatePost from './CreatePost';
 import PostListView from './PostListView';
 import PostView from './PostView';
 import Header from './Header';
-import EditPost from './EditPost'
+import UpdatePost from './UpdatePost';
+import UpdateComment from './UpdateComment';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch } from 'react-router-dom';
 import { spinnerOnOff } from './actions/spinner';
@@ -40,9 +41,14 @@ class App extends Component {
                category="all"
                posts={this.props.posts}/>
           )}/>
-          <Route exact path='/editPost/:post_id' render={({ match }) => (
-             <EditPost
+          <Route exact path='/updatePost/:post_id' render={({ match }) => (
+             <UpdatePost
                post={this.props.posts.filter((post) => (post.id === match.params.post_id))[0]}/>
+          )}/>
+          <Route exact path='/updateComment/:comment_id' render={({ match }) => (
+             <UpdateComment
+               comment={this.props.comments.filter((comment) => (comment.id === match.params.comment_id))[0]}
+             />
           )}/>
           <Route exact path="/createPost" component={CreatePost}/>
           {this.props.categories.map((category) => (
@@ -80,7 +86,7 @@ function mapStateToProps ({ posts, categories, spinner, comments }) {
     posts: Object.keys(posts).map((post) => posts[post]).filter((post) => (post.deleted === false)),
     categories,
     spinner,
-    comments: Object.keys(comments).map((comment) => comments[comment])
+    comments: Object.keys(comments).map((comment) => comments[comment]).filter((comment) => (comment.deleted === false))
   };
 }
 

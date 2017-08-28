@@ -4,6 +4,7 @@ export const VOTE_COMMENT_DOWN = 'VOTE_COMMENT_DOWN';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const DELETE_PARENT_IN_COMMENT = 'DELETE_PARENT_IN_COMMENT';
 export const CREATE_COMMENT = 'CREATE_COMMENT';
+export const UPDATE_COMMENT = 'UPDATE_COMMENT';
 
 export function getCommentsOfPost(comments) {
   return {
@@ -43,6 +44,13 @@ export function deleteParentInComment (commentId) {
 export function createComment (comment) {
   return {
     type: CREATE_COMMENT,
+    comment
+  }
+}
+
+export function updateComment (comment) {
+  return {
+    type: UPDATE_COMMENT,
     comment
   }
 }
