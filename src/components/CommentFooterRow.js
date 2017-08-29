@@ -8,13 +8,11 @@ import { toDate } from '../utils/helpers';
 class CommentFooterRow extends Component {
 
   handleCommentDelete = (comment) => {
-    this.props.deleteCommentThunk(comment.id)
-      .then(() => {
-        this.props.decrementCommentCount(comment.parentId);
-    })
-      .catch(() => {
-        this.props.history.push('/ServerError');
-      });
+    this.props.deleteCommentThunk(comment.id).then(() => {
+      this.props.decrementCommentCount(comment.parentId);
+    }).catch(() => {
+      this.props.history.push('/ServerError');
+    });
   }
 
   render () {

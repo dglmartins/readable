@@ -8,16 +8,14 @@ import { toDate } from '../utils/helpers';
 class PostFooterRow extends Component {
   onPostDelete = () => {
     //asynchronous
-    this.props.deletePostThunk(this.props.post.id)
-      .then((deletedPostId) => {
+    this.props.deletePostThunk(this.props.post.id).then((deletedPostId) => {
         // synchronous - locally redux only
-        for (const comment of this.props.comments.filter((comment) => comment.parentId === deletedPostId)) {
-          this.props.deleteParentInComment(comment.id)
-        }
-    })
-      .catch(() => {
-        this.props.history.push('/ServerError');
-      });
+      for (const comment of this.props.comments.filter((comment) => comment.parentId === deletedPostId)) {
+        this.props.deleteParentInComment(comment.id)
+      }
+    }).catch(() => {
+      this.props.history.push('/ServerError');
+    });
   }
 
   render () {

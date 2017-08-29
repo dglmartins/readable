@@ -21,19 +21,17 @@ class App extends Component {
     //synchronous dispatch
     props.spinnerOnOff(true);
     //multiple asynchronous dispatches resolve with Promise.all
-    props.getPostsCategoriesAndCommentsThunk()
-      .then((postIdAndCommentCountArray) => {
+    props.getPostsCategoriesAndCommentsThunk().then((postIdAndCommentCountArray) => {
       //synchronous dispatch
-        for (const post of postIdAndCommentCountArray) {
-          props.getCommentCount(post);
-        }
+      for (const post of postIdAndCommentCountArray) {
+        props.getCommentCount(post);
+      }
         //synchronous dispatch
-        props.spinnerOnOff(false);
-    })
-      .catch((error) => {
-        props.spinnerOnOff(false);
-        props.history.push('/ServerError');
-      });
+      props.spinnerOnOff(false);
+    }).catch((error) => {
+      props.spinnerOnOff(false);
+      props.history.push('/ServerError');
+    });
   }
 
   render() {
