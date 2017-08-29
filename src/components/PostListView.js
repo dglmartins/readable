@@ -10,7 +10,7 @@ const PostListView = (props) => (
   <div>
     <h2 className="page-title">{props.category} posts</h2>
     {props.posts.length > 0 && (
-      <SortSelect/>
+      <SortSelect sortOptions="sortOptionsPosts"/>
     )}
     {sortByCurried(props.sortBy)(props.posts).map((post) => (
       <section key={post.id} className="data-view-table-container">

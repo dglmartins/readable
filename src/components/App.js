@@ -46,16 +46,6 @@ class App extends Component {
                category="all"
                posts={this.props.posts}/>
           )}/>
-          <Route exact path='/updatePost/:post_id' render={({ match }) => (
-             <UpdatePost
-               post={this.props.posts.filter((post) => (post.id === match.params.post_id))[0]}/>
-          )}/>
-          <Route exact path='/updateComment/:comment_id' render={({ match }) => (
-             <UpdateComment
-               comment={this.props.comments.filter((comment) => (comment.id === match.params.comment_id))[0]}
-             />
-          )}/>
-          <Route exact path="/createPost" component={CreatePost}/>
           {this.props.categories.map((category) => (
             <Route
               key={category.name}
@@ -79,7 +69,17 @@ class App extends Component {
               }
             />
           ))}
-            <Route component={NoMatch}/>
+          <Route exact path='/updatePost/:post_id' render={({ match }) => (
+             <UpdatePost
+               post={this.props.posts.filter((post) => (post.id === match.params.post_id))[0]}/>
+          )}/>
+          <Route exact path='/updateComment/:comment_id' render={({ match }) => (
+             <UpdateComment
+               comment={this.props.comments.filter((comment) => (comment.id === match.params.comment_id))[0]}
+             />
+          )}/>
+          <Route exact path="/createPost" component={CreatePost}/>
+          <Route component={NoMatch}/>
         </Switch>
       </div>
     );
