@@ -11,18 +11,15 @@ const headers = {
 
 export const getAllCategories = () =>
   fetch(`${api}/categories`, { headers })
-    .then(res => res.json())
-    .catch((error) => console.log(error));
+    .then(res => res.json());
 
 export const getPostsOfCategory = (category) =>
   fetch(`${api}/${category}/posts`, { headers })
-    .then(res => res.json())
-    .catch((error) => console.log(error));
+    .then(res => res.json());
 
 export const getAllPosts = () =>
   fetch(`${api}/posts`, { headers })
-    .then(res => res.json())
-    .catch((error) => console.log(error));
+    .then(res => res.json());
 
 export const createPost = (body) =>
   fetch(`${api}/posts`, {
@@ -33,13 +30,11 @@ export const createPost = (body) =>
     },
     body: JSON.stringify(body)
   })
-    .then(res => res.json())
-    .catch((error) => console.log(error));
+    .then(res => res.json());
 
 export const getPost = (postId) =>
   fetch(`${api}/posts/${postId}`, { headers })
-    .then(res => res.json())
-    .catch((error) => console.log(error));
+    .then(res => res.json());
 
 export const votePostUp = (postId) =>
   fetch(`${api}/posts/${postId}`, {
@@ -50,8 +45,7 @@ export const votePostUp = (postId) =>
     },
     body: JSON.stringify({option: "upVote"})
   })
-    .then(res => res.json())
-    .catch((error) => console.log(error));
+    .then(res => res.json());
 
 export const votePostDown = (postId) =>
   fetch(`${api}/posts/${postId}`, {
@@ -62,8 +56,7 @@ export const votePostDown = (postId) =>
     },
     body: JSON.stringify({option: "downVote"})
   })
-    .then(res => res.json())
-    .catch((error) => console.log(error));
+    .then(res => res.json());
 
 export const updatePost = (body, postId) =>
   fetch(`${api}/posts/${postId}`, {
@@ -74,8 +67,7 @@ export const updatePost = (body, postId) =>
     },
     body: JSON.stringify(body)
   })
-    .then(res => res.json())
-    .catch((error) => console.log(error));
+    .then(res => res.json());
 
 export const deletePost = (postId) =>
   fetch(`${api}/posts/${postId}`, {
@@ -85,13 +77,11 @@ export const deletePost = (postId) =>
       'Content-type': 'application/json'
     }
   })
-    .then(res => res.json())
-    .catch((error) => alert(error));
+    .then(res => res.json());
 
 export const getCommentsOfPost = (postId) =>
   fetch(`${api}/posts/${postId}/comments`, { headers })
-    .then(res => res.json())
-    .catch((error) => console.log(error));
+    .then(res => res.json());
 
 export const createComment = (body) =>
   fetch(`${api}/comments`, {
@@ -102,13 +92,11 @@ export const createComment = (body) =>
     },
     body: JSON.stringify(body)
   })
-    .then(res => res.json())
-    .catch((error) => console.log(error));
+    .then(res => res.json());
 
 export const getComment = (commentId) =>
   fetch(`${api}/comments/${commentId}`, { headers })
-  .then(res => res.json())
-  .catch((error) => console.log(error));
+  .then(res => res.json());
 
 export const voteCommentUp = (commentId) =>
   fetch(`${api}/comments/${commentId}`, {
@@ -119,8 +107,7 @@ export const voteCommentUp = (commentId) =>
     },
     body: JSON.stringify({option: "upVote"})
   })
-    .then(res => res.json())
-    .catch((error) => console.log(error));
+    .then(res => res.json());
 
 export const voteCommentDown = (commentId) =>
   fetch(`${api}/comments/${commentId}`, {
@@ -131,8 +118,7 @@ export const voteCommentDown = (commentId) =>
     },
     body: JSON.stringify({option: "downVote"})
   })
-    .then(res => res.json())
-        .catch((error) => console.log(error));
+    .then(res => res.json());
 
 export const updateComment = (body, commentId) =>
   fetch(`${api}/comments/${commentId}`, {
@@ -143,10 +129,8 @@ export const updateComment = (body, commentId) =>
     },
     body: JSON.stringify(body)
   })
-    .then(res => res.json())
-    .catch((error) => console.log(error));
+    .then(res => res.json());
 
 export const deleteComment = (commentId) =>
   fetch(`${api}/comments/${commentId}`, { method: 'DELETE', headers })
-    .then(res => res.json())
-    .catch((error) => console.log(error));
+    .then(res => res.json());

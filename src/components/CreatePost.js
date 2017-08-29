@@ -20,9 +20,13 @@ class CreatePost extends Component {
     const author = event.target.elements.author.value;
     const body = event.target.elements.body.value;
     const category = event.target.elements.category.value;
-    this.props.createPostThunk({id, timestamp, title, body, author, category}).then(() => {
-      this.props.initializeCommentCount(id);
-    });
+    this.props.createPostThunk({id, timestamp, title, body, author, category})
+      .then(() => {
+        this.props.initializeCommentCount(id);
+    })
+      .catch(() => {
+        this.props.history.push('/ServerError');
+      });
     event.target.elements.author.value = '';
     event.target.elements.title.value = '';
     event.target.elements.body.value = ''

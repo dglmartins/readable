@@ -15,8 +15,13 @@ class UpdateComment extends Component {
       alert("Please change something!");
       return;
     } else {
-      this.props.updateCommentThunk(update);
-      this.props.history.goBack();
+      this.props.updateCommentThunk(update)
+        .then(() => {
+          this.props.history.goBack();
+      })
+        .catch(() => {
+          this.props.history.push('/ServerError');
+      });
     }
   };
 

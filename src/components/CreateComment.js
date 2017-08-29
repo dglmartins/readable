@@ -15,9 +15,13 @@ class CreateComment extends Component {
     const author = event.target.elements.author.value;
     const body = event.target.elements.body.value;
     const parentId = this.props.postId
-    this.props.createCommentThunk({id, timestamp, body, author, parentId}).then(() => {
-      this.props.incrementCommentCount(this.props.postId)
-    });
+    this.props.createCommentThunk({id, timestamp, body, author, parentId})
+      .then(() => {
+        this.props.incrementCommentCount(this.props.postId)
+    })
+      .catch(() => {
+        this.props.history.push('/ServerError');
+      });
     event.target.elements.author.value = '';
     event.target.elements.body.value = ''
   };

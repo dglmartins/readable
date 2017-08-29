@@ -9,7 +9,7 @@ function getPostsThunk () {
       .then((posts) => {
         dispatch(getPosts(posts));
         return posts;
-    });
+    })
   };
 };
 
@@ -20,7 +20,7 @@ function getCategoriesThunk () {
       .then((categories) => {
         dispatch(getCategories(categories));
         return categories;
-    });
+    })
   };
 };
 
@@ -45,7 +45,8 @@ export function getPostsCategoriesAndCommentsThunk () {
       Promise.all(postsArray.map((post) => (
         dispatch(getCommentsOfPostThunk(post))
       )))
-    ));
+    ))
+      .catch((error) => (error))
   };
 };
 
@@ -81,8 +82,8 @@ export function deletePostThunk (postId) {
 export function createPostThunk (post) {
   return function(dispatch, getState, ReadableApi) {
     return ReadableApi.createPost(post)
-      .then((newPost) => {
-        dispatch(createPost(newPost))
+      .then((post) => {
+        dispatch(createPost(post))
     })
   };
 };
@@ -121,7 +122,7 @@ export function deleteCommentThunk (commentId) {
     return ReadableApi.deleteComment(commentId)
       .then((comment) => {
         dispatch(deleteComment(comment.id))
-    });
+    })
   };
 };
 

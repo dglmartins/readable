@@ -15,8 +15,13 @@ class UpdatePost extends Component {
       alert("Please change something!");
       return;
     } else {
-      this.props.updatePostThunk(update);
-      this.props.history.push(`/${this.props.post.category}/${id}`);
+      this.props.updatePostThunk(update)
+        .then(() => {
+          this.props.history.push(`/${this.props.post.category}/${id}`);
+      })
+        .catch(() => {
+          this.props.history.push('/ServerError');
+      });
     }
   };
 
