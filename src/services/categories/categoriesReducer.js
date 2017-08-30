@@ -1,4 +1,4 @@
-import { GET_ALL_CATEGORIES } from './actions';
+import { GET_ALL_CATEGORIES } from './categoriesActions';
 
 export function categories (state = [], action) {
   switch (action.type) {

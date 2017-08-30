@@ -1,4 +1,4 @@
-import { CHANGE_SORT_BY_PROP, CHANGE_SORT_BY_ORDER, RESET_SORT_BY } from './actions';
+import { CHANGE_SORT_BY_PROP, CHANGE_SORT_BY_ORDER, RESET_SORT_BY } from './sortByActions';
 
 const intialState = {
   prop: 'voteScore',

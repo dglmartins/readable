@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { decrementCommentCount } from '../../services/actions';
-import { voteCommentUpThunk, voteCommentDownThunk, deleteCommentThunk } from '../services/thunkActions';
+import { decrementCommentCount } from '../../services/postsActions';
+import { voteCommentUpThunk, voteCommentDownThunk, deleteCommentThunk } from '../services/commentsThunkActions';
 import { toDate } from '../../services/helpers';
 
 /**

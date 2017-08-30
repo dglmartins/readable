@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const PostHeaderRow = (props) => (
   <tr className="data-row">
     <td className="vote-count">Votes: <span>{props.post.voteScore}</span></td>
-    <td className="post-title">Title:
+    <td className="post-title"><span>Title: </span>
 
       {/* link to Route that renders PostView component  */}
       <Link className="router-post-link" to={`/${props.post.category}/${props.post.id}`}>

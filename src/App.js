@@ -10,8 +10,8 @@ import UpdatePost from './features/posts/UpdatePost';
 import UpdateComment from './features/posts/comments/UpdateComment';
 import Spinner from './features/spinner';
 import NoMatch from './features/noMatch';
-import { spinnerOnOff } from './features/spinner/services/actions';
-import { getCommentCount } from './features/posts/services/actions';
+import { spinnerOnOff } from './features/spinner/services/spinnerActions';
+import { getCommentCount } from './features/posts/services/postsActions';
 import { getPostsCategoriesAndCommentsThunk } from './services/getAllThunkActions';
 
 /**

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { changeSortByProp, changeSortByOrder, resetSortBy } from './services/actions';
+import { changeSortByProp, changeSortByOrder, resetSortBy } from './services/sortByActions';
 
 /**
 * @description SortSelect component. SortSelect gets called by PostListView and CommentsListView components.

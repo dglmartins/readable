@@ -1,6 +1,6 @@
-import { getPosts } from '../features/posts/services/actions';
-import { getCommentsOfPost } from '../features/posts/comments/services/actions';
-import { getCategories } from '../features/categories/services/actions';
+import { getPosts } from '../features/posts/services/postsActions';
+import { getCommentsOfPost } from '../features/posts/comments/services/commentsActions';
+import { getCategories } from './categories/categoriesActions';
 
 //get all posts
 function getPostsThunk () {

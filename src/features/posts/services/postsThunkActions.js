@@ -1,4 +1,4 @@
-import { votePostUp, votePostDown, deletePost, createPost, updatePost } from './actions';
+import { votePostUp, votePostDown, deletePost, createPost, updatePost } from './postsActions';
 
 //other post thunks
 export function votePostUpThunk (postId) {

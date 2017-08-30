@@ -9,7 +9,7 @@ import {
   INCREMENT_COMMENT_COUNT,
   DECREMENT_COMMENT_COUNT,
   INITALIZE_COMMENT_COUNT
-} from './actions';
+} from './postsActions';
 
 export function posts (state = {}, action) {
   const { post, postId, initialCommentCount } = action;

@@ -1,4 +1,4 @@
-import { SPINNER_ON_OFF } from './actions';
+import { SPINNER_ON_OFF } from './spinnerActions';
 
 export function spinner (state = {spinnerOn: false}, action) {
   switch (action.type) {

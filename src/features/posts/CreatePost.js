@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { initializeCommentCount } from './services/actions';
-import { createPostThunk } from './services/thunkActions';
+import { initializeCommentCount } from './services/postsActions';
+import { createPostThunk } from './services/postsThunkActions';
 import uuidv4 from  'uuid/v4';
 
 /**

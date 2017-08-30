@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateCommentThunk } from './services/thunkActions';
+import { updateCommentThunk } from './services/commentsThunkActions';
 
 /**
 * @description UpdateComment component. UpdateComment gets called by App Component when Route matches. Route matches when user clicks edit link on CommentFooterRow component.

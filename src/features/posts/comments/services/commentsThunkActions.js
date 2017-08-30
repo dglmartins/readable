@@ -1,4 +1,4 @@
-import { voteCommentUp, voteCommentDown, deleteComment, createComment, updateComment } from './actions';
+import { voteCommentUp, voteCommentDown, deleteComment, createComment, updateComment } from './commentsActions';
 
 export function voteCommentUpThunk (commentId) {
   return function(dispatch, getState, ReadableApi) {

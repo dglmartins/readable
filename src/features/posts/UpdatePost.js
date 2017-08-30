@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updatePostThunk } from './services/thunkActions';
+import { updatePostThunk } from './services/postsThunkActions';
 
 /**
 * @description UpdatePost component. UpdatePost gets called by App Component when Route matches. Route matches when user clicks edit link on PostFooterRow component.

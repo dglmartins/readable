@@ -6,7 +6,7 @@ import {
   DELETE_PARENT_IN_COMMENT,
   CREATE_COMMENT,
   UPDATE_COMMENT
-} from './actions';
+} from './commentsActions';
 
 export function comments (state = {}, action) {
   const { comment, commentId } = action;
