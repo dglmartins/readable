@@ -1,0 +1,69 @@
+/* PostListView */
+.page-title {
+  text-align: center;
+  color: #fb6542;
+}
+
+/* PostListView , PostView*/
+.data-view-table-container {
+  width: 95%;
+  overflow: auto;
+  margin-left: 2.5%;
+  margin-top: 0.5em;
+  border-bottom: 1px solid #ffbb00;
+}
+
+/* Multiple Components, PostView*/
+.data-view-table {
+  width: 100%;
+}
+
+/* CommentListView Component*/
+.comment-view-table-container {
+  width: 95%;
+  overflow: auto;
+  margin-left: 2.5%;
+  margin-top: 0.5em;
+}
+
+.comments-list {
+  max-height: 15em;
+  overflow: auto;
+}
+
+/* CommentBodyRow, PostBodyRow, PostFooterRow, PostHeaderRow*/
+.data-row {
+  width: 100%;
+  height: 2em;
+}
+
+/* CommentBodyRow, PostHeaderRow */
+
+.vote-count {
+  text-align: center;
+  background-color: #fb6542;
+  color: white;
+  padding: 0.25em;
+  width: 5%;
+}
+
+.comment-body {
+  font-style: italic;
+  color: #3f681c;
+  font-size: 0.9em;
+  width: 95%;
+}
+
+/* CreateComment and CreatePost , UpdateComment, UpdatePost component*/
+.new-container {
+  margin-left: 2em;
+}
+
+.input-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.text-area {
+  width: 100%;
+}

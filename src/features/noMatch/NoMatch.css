@@ -1,0 +1,10 @@
+/* NoMatch Component */
+/* 404 page */
+.error-template {
+  text-align: center;
+}
+
+.error-details {
+  width: 100%;
+  margin: auto 0;
+}
