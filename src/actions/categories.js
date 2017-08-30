@@ -6,12 +6,3 @@ export function getCategories (categories) {
     categories
   };
 };
-
-// export function getAllCategories () {
-//   return function(dispatch, getState, ReadableApi) {
-//     return ReadableApi.getAllCategories()
-//       .then((categories) => {
-//         dispatch(getCategories(categories));
-//       });
-//   }
-// }

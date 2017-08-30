@@ -1,4 +1,4 @@
-import { CHANGE_SORT_BY_PROP, CHANGE_SORT_BY_ORDER } from '../actions/sortBy';
+import { CHANGE_SORT_BY_PROP, CHANGE_SORT_BY_ORDER, RESET_SORT_BY } from '../actions/sortBy';
 
 const intialState = {
   prop: 'voteScore',
@@ -24,12 +24,21 @@ export function sortBy (state = intialState, action) {
       return {
         ...state,
         prop: action.prop
-      }
-      case CHANGE_SORT_BY_ORDER:
-        return {
-          ...state,
-          order: action.order
-        }
+      };
+
+    case CHANGE_SORT_BY_ORDER:
+      return {
+        ...state,
+        order: action.order
+      };
+
+    case RESET_SORT_BY:
+      return {
+        ...state,
+        prop: 'voteScore',
+        order: 'descend'
+      };
+
     default:
       return state;
   }

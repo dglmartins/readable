@@ -44,7 +44,7 @@ export function getPostsCategoriesAndCommentsThunk () {
     ]).then(([postsArray, categoriesArray]) => (
       Promise.all(postsArray.map((post) => (
         dispatch(getCommentsOfPostThunk(post))
-      )))
+      ))).then(res => res)
     ))
       .catch((error) => (error))
   };
@@ -98,7 +98,6 @@ export function updatePostThunk (update) {
 };
 
 //other comments thunks
-
 export function voteCommentUpThunk (commentId) {
   return function(dispatch, getState, ReadableApi) {
     return ReadableApi.voteCommentUp(commentId)
@@ -128,17 +127,14 @@ export function deleteCommentThunk (commentId) {
 
 export function createCommentThunk (comment) {
   return function(dispatch, getState, ReadableApi) {
-    // console.log(comment);
     return ReadableApi.createComment(comment)
       .then((comment) => {
-        console.log(comment);
         dispatch(createComment(comment))
     });
   };
 };
 
 export function updateCommentThunk (update) {
-  console.log(update)
   return function(dispatch, getState, ReadableApi) {
     return ReadableApi.updateComment(update.body, update.id)
       .then((comment) => {
