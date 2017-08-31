@@ -15,13 +15,13 @@ import { getCommentCount } from './features/posts/services/postsActions';
 import { getPostsCategoriesAndCommentsThunk } from './services/getAllThunkActions';
 
 /**
-* @description App component. Uses constructor to get all posts, comments and categories from api into the app. Displays a Header, a conditional spinner, and uses Switch to navigate all routes and to 404 if wrong path or server error. Uses specific Routes to call PostListView, PostView, UpdatePost, UpdateComment, CreatePost and NoMatch components depending on path. App gets called in index.js to display App in root div. Passes categories, comments and posts to PostListView, passes a single post to PostView and UpdatePost, passes a single comment to UpdateComment.
+* @description App component. Uses constructor to get all posts, comments and categories from api into the app. Displays a Header, a conditional spinner, and uses Switch to navigate all routes and to 404 if wrong path or server error. Uses specific Routes to call PostListView, PostView, UpdatePost, UpdateComment, CreatePost and NoMatch components depending on path. App gets called in index.js to display App in root div. Passes categories, comments and posts to PostListView, passes a single post and its comments to PostView, passes a single post to UpdatePost, passes a single comment to UpdateComment, passes the categories to CreatePost. Code is organized by feature, with comments components and services as children of posts. For example, the posts reducer and posts actions are found in features/posts/services, where the comments reducer and actions are found in features/posts/comments/services. A root services folder holds the categories reducer and its only action (to get all), as well as a getAllThunkActions which handles get all posts, comments and categories to build the initial Redux state of these three reducers once the apis get called.
 */
 
 class App extends Component {
 
   /**
-  * @description - turns on spinner in Redux store with spinnerOnOff action. Then gets all posts, categories and comments with thunk action that uses Promise.all. Then if no error,  adds a comment count property to each post in Redux store, then turns off spinner. If error with the api (such as server not started), redirects to '/ServerError', which renders the NoMatch component.
+  * @description - turns on spinner in Redux store with spinnerOnOff action. Then gets all posts, categories and comments with root services thunk action that uses Promise.all. Then if no error,  adds a comment count property to each post in Redux store, then turns off spinner. If error with the api (such as server not started), redirects to '/ServerError', which renders the NoMatch component.
   */
   constructor(props) {
     super(props);
